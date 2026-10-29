@@ -1,0 +1,18 @@
+# Architect role definition. Editing this file changes the resolved role in
+# the next run's snapshot with no Python change.
+name: ARCHITECTURE
+worker: claude-code
+instructions: ../instructions/architecture.md
+
+tools: [repo.read, repo.search, artifacts.read, artifacts.write]
+# ARCHITECTURE is read-only with respect to repository source code — zero
+# tolerance, any changed path at all is a violation.
+permissions:
+  write_scope: []
+
+before: [ensure_clean_worktree]
+after: []
+
+inputs: [acceptance_criteria.json]
+outputs: [design.md, constraints.json]
+examples: []

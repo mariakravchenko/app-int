@@ -1,0 +1,25 @@
+[project]
+name = "app-int"
+version = "0.1.0"
+description = "Integration target repository for Dark Factory."
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<9",
+    "ruff>=0.16,<1",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/app_int"]

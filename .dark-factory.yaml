@@ -1,0 +1,27 @@
+# Dark Factory repo behaviour. Read once per run, at creation; the resolved
+# effective-config snapshot is persisted on the run and is what every resume
+# replays — editing this file never changes an in-flight run. No secrets
+# here: infrastructure credentials live in .env.
+version: 1
+
+repository:
+  base_branch: main
+  github_owner: mariakravchenko
+  github_repo: app-int
+
+workflow:
+  roles: [BA, ARCHITECTURE, DEVELOPMENT, QA]
+
+roles_dir: .dark-factory/roles
+
+quality_gate:
+  commands:
+    - "uv run pytest -q"
+    - "uv run ruff check ."
+
+retry:
+  qa_developer_max_iterations: 3
+  quality_gate_max_iterations: 2
+
+publishing:
+  create_pr: true

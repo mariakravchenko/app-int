@@ -1,0 +1,27 @@
+# QA role definition.
+name: QA
+worker: claude-code
+instructions: ../instructions/qa.md
+
+# QA writes tests, never production source — repo.write stays absent, which
+# is the "cannot publish" half of its contract.
+tools:
+  [
+    repo.read,
+    repo.search,
+    repo.write_tests,
+    shell.execute,
+    artifacts.read,
+    artifacts.write,
+  ]
+# QA may write only under tests/ — fixtures and test utilities, never
+# production code.
+permissions:
+  write_scope: ["tests/**"]
+
+before: [ensure_clean_worktree]
+after: [collect_test_results, collect_diff]
+
+inputs: [acceptance_criteria.json, implementation_summary.json]
+outputs: [test_report.json, verdict.json]
+examples: []

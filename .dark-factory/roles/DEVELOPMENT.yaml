@@ -1,0 +1,30 @@
+# Developer role definition. Editing this file changes the resolved role in
+# the next run's snapshot with no Python change.
+name: DEVELOPMENT
+worker: claude-code
+instructions: ../instructions/development.md
+
+tools:
+  [
+    repo.read,
+    repo.search,
+    repo.write,
+    repo.write_tests,
+    shell.execute,
+    artifacts.read,
+    artifacts.write,
+  ]
+# Developer may write anywhere under src/ — production code, not tests.
+permissions:
+  write_scope: ["src/**"]
+
+before: [ensure_clean_worktree]
+after: [collect_diff]
+
+inputs: [design.md, constraints.json]
+# Feedback-loop artifacts: verdict.json carries QA's structured issues on a
+# QA-FAIL bounce; quality_gate.json carries the gate's real command output on
+# a gate-FAIL bounce. Both are absent on the first attempt.
+optional_inputs: [verdict.json, quality_gate.json]
+outputs: [implementation_summary.json]
+examples: []
