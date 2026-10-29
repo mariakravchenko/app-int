@@ -5,7 +5,7 @@ worker: claude-code
 instructions: ../instructions/architecture.md
 
 tools: [repo.read, repo.search, artifacts.read, artifacts.write]
-# ARCHITECTURE is read-only with respect to repository source code — zero
+# ARCHITECTURE is read-only with respect to repository source code -- zero
 # tolerance, any changed path at all is a violation.
 permissions:
   write_scope: []

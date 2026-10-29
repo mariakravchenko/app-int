@@ -3,7 +3,7 @@ name: QA
 worker: claude-code
 instructions: ../instructions/qa.md
 
-# QA writes tests, never production source — repo.write stays absent, which
+# QA writes tests, never production source -- repo.write stays absent, which
 # is the "cannot publish" half of its contract.
 tools:
   [
@@ -14,7 +14,7 @@ tools:
     artifacts.read,
     artifacts.write,
   ]
-# QA may write only under tests/ — fixtures and test utilities, never
+# QA may write only under tests/ -- fixtures and test utilities, never
 # production code.
 permissions:
   write_scope: ["tests/**"]

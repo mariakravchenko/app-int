@@ -24,6 +24,9 @@ jobs:
       - name: Install dark-factory
         run: pip install "dark-factory @ git+https://github.com/mariakravchenko/dark-factory.git"
 
+      - name: Install the worker runtime (claude-code)
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Resume the run
         run: dark-factory resume "${{ inputs.run_id }}"
         env:

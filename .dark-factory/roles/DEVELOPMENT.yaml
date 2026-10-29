@@ -14,7 +14,7 @@ tools:
     artifacts.read,
     artifacts.write,
   ]
-# Developer may write anywhere under src/ — production code, not tests.
+# Developer may write anywhere under src/ -- production code, not tests.
 permissions:
   write_scope: ["src/**"]
 
