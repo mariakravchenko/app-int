@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {"name": "AC-1 import and callable", "result": "PASS", "detail": "tests/test_round_currency.py::test_round_currency_is_importable_and_callable passed; `from app_int.main import round_currency` succeeds and callable(round_currency) is True."},
+    {"name": "AC-2 at most 2 decimal places", "result": "PASS", "detail": "test_round_currency_has_at_most_two_decimals parametrized over all 18 inputs from AC-3..AC-8: -Decimal(str(result)).as_tuple().exponent <= 2 for every input (18/18 passed)."},
+    {"name": "AC-3 round-half-up on Decimal ties", "result": "PASS", "detail": "round_currency(Decimal('2.345')) == Decimal('2.35'); round_currency(Decimal('2.335')) == Decimal('2.34'). Parametrized cases passed."},
+    {"name": "AC-4 negative ties away from zero", "result": "PASS", "detail": "round_currency(Decimal('-2.345')) == Decimal('-2.35'); round_currency(-2.345) == Decimal('-2.35'). Parametrized cases passed."},
+    {"name": "AC-5 non-tie rounding", "result": "PASS", "detail": "round_currency(2.344) == Decimal('2.34'); round_currency(2.346) == Decimal('2.35'); round_currency(-2.344) == Decimal('-2.34'). Parametrized cases passed."},
+    {"name": "AC-6 float ties by decimal value", "result": "PASS", "detail": "round_currency(2.345) == Decimal('2.35'); round_currency(1.005) == Decimal('1.01'); round_currency(0.125) == Decimal('0.13'); round_currency(2.675) == Decimal('2.68'). Parametrized cases passed."},
+    {"name": "AC-7 padding and already-rounded values", "result": "PASS", "detail": "round_currency(2.3) == Decimal('2.30'); round_currency(5) == Decimal('5.00'); round_currency(0) == Decimal('0.00'); round_currency(Decimal('19.99')) == Decimal('19.99'). Parametrized cases passed."},
+    {"name": "AC-8 int/float/Decimal accepted", "result": "PASS", "detail": "round_currency(7) == Decimal('7.00'); round_currency(7.005) == Decimal('7.01'); round_currency(Decimal('7.005')) == Decimal('7.01'); none raised."},
+    {"name": "Extra: independent of caller decimal context", "result": "PASS", "detail": "test_round_currency_ignores_caller_context_rounding: all 18 AC inputs give the same expected results inside localcontext() with rounding=ROUND_HALF_EVEN (18/18 passed)."},
+    {"name": "AC-9 existing functions unchanged", "result": "PASS", "detail": "test_existing_functions_unchanged, test_health_check_reports_ok and test_add_returns_the_sum passed: health_check() == {'status': 'ok'}, add(2, 3) == 5."},
+    {"name": "AC-10 quality gate", "result": "PASS", "detail": "`uv run pytest -q` -> '59 passed in 0.03s', exit status 0. `uv run ruff check .` -> 'All checks passed!', exit status 0."},
+    {"name": "AC-11 docstring mentions half-up", "result": "PASS", "detail": "test_round_currency_docstring_mentions_half_up passed. Docstring begins: 'Round a monetary amount to 2 decimal places using round-half-up (ties away from zero).'"},
+    {"name": "AC-12 no new runtime dependencies", "result": "PASS", "detail": "`git diff main -- pyproject.toml` is empty (0 lines); dependencies = [] is unchanged. The implementation imports only the stdlib `decimal` module."}
+  ]
+}

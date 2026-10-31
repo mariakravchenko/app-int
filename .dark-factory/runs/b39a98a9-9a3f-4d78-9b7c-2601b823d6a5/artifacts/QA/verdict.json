@@ -1,0 +1,20 @@
+{
+  "criteria": [
+    {"criterion_id": "AC-1", "result": "PASS", "notes": "Import works and the function is callable."},
+    {"criterion_id": "AC-2", "result": "PASS", "notes": "All 18 AC inputs return at most 2 decimal places."},
+    {"criterion_id": "AC-3", "result": "PASS", "notes": "2.345 -> 2.35 and 2.335 -> 2.34 (half-up, not half-even)."},
+    {"criterion_id": "AC-4", "result": "PASS", "notes": "-2.345 (Decimal and float) -> -2.35."},
+    {"criterion_id": "AC-5", "result": "PASS", "notes": "2.344 -> 2.34, 2.346 -> 2.35, -2.344 -> -2.34."},
+    {"criterion_id": "AC-6", "result": "PASS", "notes": "Float ties 2.345, 1.005, 0.125, 2.675 round up to 2.35, 1.01, 0.13, 2.68."},
+    {"criterion_id": "AC-7", "result": "PASS", "notes": "2.3 -> 2.30, 5 -> 5.00, 0 -> 0.00, 19.99 -> 19.99."},
+    {"criterion_id": "AC-8", "result": "PASS", "notes": "int, float and Decimal inputs accepted and return the expected values."},
+    {"criterion_id": "AC-9", "result": "PASS", "notes": "health_check and add behave as before."},
+    {"criterion_id": "AC-10", "result": "PASS", "notes": "pytest: 59 passed, exit status 0; ruff: all checks passed, exit status 0."},
+    {"criterion_id": "AC-11", "result": "PASS", "notes": "Docstring contains 'round-half-up'."},
+    {"criterion_id": "AC-12", "result": "PASS", "notes": "pyproject.toml is unchanged."}
+  ],
+  "issues": [
+    {"severity": "minor", "description": "The src/app_int/main.py change sits in commit 435c8ae ('recover uncommitted changes from QA attempt 1') and not in the DEVELOPMENT commit 2d61435, whose diff.patch is empty. The code matches the implementation summary, but the commit history is unusual. Reviewers should know about it. It does not block this run."}
+  ],
+  "status": "PASS"
+}
