@@ -1,0 +1,15 @@
+{
+  "criteria": [
+    {"id": "AC-1", "description": "[R1] `from app_int.main import multiply` succeeds and `multiply` is callable."},
+    {"id": "AC-2", "description": "[R2] `multiply` takes exactly two positional parameters named `a` and `b` (as reported by `inspect.signature`)."},
+    {"id": "AC-3", "description": "[R3] `multiply(2, 3)` returns `6`."},
+    {"id": "AC-4", "description": "[R4] `multiply(0, 5)` returns `0`."},
+    {"id": "AC-5", "description": "[R4] `multiply(-2, 3)` returns `-6` and `multiply(-2, -3)` returns `6`."},
+    {"id": "AC-6", "description": "[R5] `multiply` has a non-empty docstring and its signature is annotated with `int` for `a`, `b`, and the return type."},
+    {"id": "AC-7", "description": "[R6] A test function in `tests/` imports `multiply` from `app_int.main` and asserts on its return value; that test is collected and passes under `uv run pytest -q`."},
+    {"id": "AC-8", "description": "[R7] `health_check()` still returns `{\"status\": \"ok\"}`, `add(2, 3)` still returns `5`, and the pre-existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum` still pass."},
+    {"id": "AC-9", "description": "[R8] `uv run pytest -q` exits with status 0."},
+    {"id": "AC-10", "description": "[R8] `uv run ruff check .` exits with status 0."},
+    {"id": "AC-11", "description": "[R9] `[project].dependencies` in `pyproject.toml` is unchanged (empty list)."}
+  ]
+}
