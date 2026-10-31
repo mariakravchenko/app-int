@@ -1,0 +1,19 @@
+{
+  "criteria": [
+    {"criterion_id": "AC-1", "result": "PASS", "notes": "multiply imports and is callable."},
+    {"criterion_id": "AC-2", "result": "PASS", "notes": "Signature (a, b), both positional-or-keyword."},
+    {"criterion_id": "AC-3", "result": "PASS", "notes": "multiply(2, 3) == 6."},
+    {"criterion_id": "AC-4", "result": "PASS", "notes": "multiply(0, 5) == 0."},
+    {"criterion_id": "AC-5", "result": "PASS", "notes": "multiply(-2, 3) == -6; multiply(-2, -3) == 6."},
+    {"criterion_id": "AC-6", "result": "PASS", "notes": "Docstring present; a, b, return annotated int."},
+    {"criterion_id": "AC-7", "result": "PASS", "notes": "tests/test_main.py::test_multiply_returns_the_product added by QA; collected and passes."},
+    {"criterion_id": "AC-8", "result": "PASS", "notes": "health_check, add and both pre-existing tests unchanged and passing."},
+    {"criterion_id": "AC-9", "result": "PASS", "notes": "uv run pytest -q: 3 passed, exit 0."},
+    {"criterion_id": "AC-10", "result": "PASS", "notes": "uv run ruff check .: All checks passed!, exit 0."},
+    {"criterion_id": "AC-11", "result": "PASS", "notes": "pyproject.toml unchanged vs main; dependencies = []."}
+  ],
+  "issues": [
+    {"severity": "minor", "description": "The multiply implementation in src/app_int/main.py was committed by the orchestrator's 'recover uncommitted changes from QA attempt 1' commit rather than a DEVELOPMENT commit; content matches the implementation summary, so no functional impact."}
+  ],
+  "status": "PASS"
+}

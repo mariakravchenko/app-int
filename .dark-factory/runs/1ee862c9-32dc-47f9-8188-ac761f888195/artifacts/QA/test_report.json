@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {"name": "AC-1 import multiply", "result": "PASS", "detail": "uv run python -c \"from app_int.main import multiply; print(callable(multiply))\" -> 'callable True'"},
+    {"name": "AC-2 signature params a, b", "result": "PASS", "detail": "inspect.signature(multiply) -> (a: 'int', b: 'int') -> 'int'; parameters [('a','POSITIONAL_OR_KEYWORD'), ('b','POSITIONAL_OR_KEYWORD')] - exactly two, named a and b"},
+    {"name": "AC-3 multiply(2, 3) == 6", "result": "PASS", "detail": "ad-hoc call printed 6; also asserted in tests/test_main.py::test_multiply_returns_the_product (passed)"},
+    {"name": "AC-4 multiply(0, 5) == 0", "result": "PASS", "detail": "ad-hoc call printed 0; asserted in test_multiply_returns_the_product (passed)"},
+    {"name": "AC-5 negatives", "result": "PASS", "detail": "multiply(-2, 3) printed -6, multiply(-2, -3) printed 6; both asserted in test_multiply_returns_the_product (passed)"},
+    {"name": "AC-6 docstring and int annotations", "result": "PASS", "detail": "multiply.__doc__ == 'Return the product of two integers.'; typing.get_type_hints(multiply) -> {'a': int, 'b': int, 'return': int}"},
+    {"name": "AC-7 test exists, collected and passes", "result": "PASS", "detail": "QA added tests/test_main.py::test_multiply_returns_the_product importing multiply from app_int.main and asserting return values. uv run pytest -q --collect-only lists it; uv run pytest -q -> '3 passed in 0.01s'"},
+    {"name": "AC-8 regressions", "result": "PASS", "detail": "health_check() -> {'status': 'ok'}; add(2, 3) -> 5; test_health_check_reports_ok and test_add_returns_the_sum collected and passed (3 passed)"},
+    {"name": "AC-9 uv run pytest -q exit 0", "result": "PASS", "detail": "output '3 passed in 0.01s', exit=0"},
+    {"name": "AC-10 uv run ruff check . exit 0", "result": "PASS", "detail": "output 'All checks passed!', exit=0"},
+    {"name": "AC-11 pyproject dependencies unchanged", "result": "PASS", "detail": "git diff main -- pyproject.toml is empty (0 lines); pyproject.toml line 6: 'dependencies = []'"}
+  ]
+}
