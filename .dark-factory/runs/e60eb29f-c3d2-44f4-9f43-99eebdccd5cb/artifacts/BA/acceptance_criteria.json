@@ -1,0 +1,76 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R-1] `from app_int.main import round_number` succeeds and `round_number` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R-2, R-3] `round_number(3.7) == 4` and `round_number(3.2) == 3` (ndigits defaults to 0)."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R-4] `round_number(3.14159, 2) == 3.14` and `round_number(3.14159, 3) == 3.142`."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R-5] `round_number(1234, -2) == 1200`, `round_number(1250, -2) == 1300`, and `round_number(-1250, -2) == -1300`."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R-6] `round_number(2.5) == 3`, `round_number(0.5) == 1`, `round_number(-2.5) == -3`, and `round_number(-0.5) == -1`."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R-6] `round_number(0.125, 2) == 0.13` and `round_number(-0.125, 2) == -0.13`."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R-7] `round_number(2.675, 2) == 2.68` and `round_number(1.005, 2) == 1.01`."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R-8] `type(round_number(2.4)) is int`, `type(round_number(1250, -2)) is int`, and `type(round_number(2.4, 1)) is float`."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R-9] `round_number(7) == 7` and `round_number(7, 2) == 7.0`."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R-10] `round_number(\"2.5\")`, `round_number(None)`, and `round_number(True)` each raise `TypeError`."
+    },
+    {
+      "id": "AC-11",
+      "description": "[R-11] `round_number(2.5, 1.0)`, `round_number(2.5, \"1\")`, and `round_number(2.5, True)` each raise `TypeError`."
+    },
+    {
+      "id": "AC-12",
+      "description": "[R-12] `round_number(float(\"nan\"))`, `round_number(float(\"inf\"))`, and `round_number(float(\"-inf\"))` each raise `ValueError`."
+    },
+    {
+      "id": "AC-13",
+      "description": "[R-13] Calling `round_number(2.5)` twice returns the same result both times and produces no stdout/stderr output."
+    },
+    {
+      "id": "AC-14",
+      "description": "[N-1] `round_number` has type annotations for both parameters and its return value, and a non-empty docstring that names the half-away-from-zero tie rule."
+    },
+    {
+      "id": "AC-15",
+      "description": "[N-2] The `dependencies` list in `pyproject.toml` is unchanged (still empty)."
+    },
+    {
+      "id": "AC-16",
+      "description": "[N-3] `health_check() == {\"status\": \"ok\"}` and `add(2, 3) == 5` still hold, and the pre-existing tests in `tests/test_main.py` pass unchanged."
+    },
+    {
+      "id": "AC-17",
+      "description": "[N-4] `uv run pytest -q` exits with status 0 and `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-18",
+      "description": "[N-5] At least one test under `tests/` imports and exercises `round_number`."
+    }
+  ]
+}
