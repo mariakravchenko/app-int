@@ -1,0 +1,59 @@
+diff --git a/src/app_int/main.py b/src/app_int/main.py
+index 3c05ee4..a617bcd 100644
+--- a/src/app_int/main.py
++++ b/src/app_int/main.py
+@@ -7,6 +7,9 @@ web framework, a database, or any external service.
+ 
+ from __future__ import annotations
+ 
++import math
++from decimal import ROUND_HALF_UP, Decimal, localcontext
++
+ 
+ def health_check() -> dict[str, str]:
+     """Report that the application is alive."""
+@@ -16,3 +19,44 @@ def health_check() -> dict[str, str]:
+ def add(a: int, b: int) -> int:
+     """Return the sum of two integers."""
+     return a + b
++
++
++def round_number(value: int | float, ndigits: int = 0) -> int | float:
++    """Round ``value`` to ``ndigits`` decimal places, with ties rounding half away from zero.
++
++    Ties round half away from zero for both signs: ``2.5 -> 3``, ``-2.5 -> -3``,
++    ``0.125`` at 2 digits ``-> 0.13``. A float is rounded as the decimal number
++    it displays as (its shortest ``repr``), so ``round_number(2.675, 2)`` is
++    ``2.68`` -- unlike the built-in ``round``, which gives ``2.67``.
++
++    A negative ``ndigits`` rounds to the left of the decimal point: tens for
++    ``-1``, hundreds for ``-2``, and so on (``round_number(1250, -2) == 1300``).
++
++    Returns an ``int`` when ``ndigits <= 0`` and a ``float`` when ``ndigits > 0``,
++    whatever the type of ``value``.
++
++    Raises:
++        TypeError: if ``value`` is a bool or not an int/float, or if ``ndigits``
++            is a bool or not an int.
++        ValueError: if ``value`` is NaN or infinite.
++    """
++    if isinstance(value, bool) or not isinstance(value, (int, float)):
++        raise TypeError(f"value must be an int or float, not {type(value).__name__}")
++    if isinstance(ndigits, bool) or not isinstance(ndigits, int):
++        raise TypeError(f"ndigits must be an int, not {type(ndigits).__name__}")
++    if isinstance(value, float) and not math.isfinite(value):
++        raise ValueError(f"value must be finite, got {value!r}")
++
++    exact = Decimal(repr(value)) if isinstance(value, float) else Decimal(value)
++    quantum = Decimal(1).scaleb(-ndigits)
++
++    # Enough precision for every digit of the result, so quantize never raises
++    # InvalidOperation. localcontext() is scoped; the global context is untouched.
++    integer_digits = max(exact.adjusted(), 0) + 1
++    with localcontext() as ctx:
++        ctx.prec = max(28, integer_digits + max(ndigits, 0) + 2)
++        quantized = exact.quantize(quantum, rounding=ROUND_HALF_UP)
++
++    if ndigits <= 0:
++        return int(quantized)
++    return float(quantized)

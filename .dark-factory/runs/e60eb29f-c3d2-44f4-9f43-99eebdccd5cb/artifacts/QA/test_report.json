@@ -1,0 +1,99 @@
+{
+  "cases": [
+    {
+      "name": "AC-1",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac1_importable_and_callable passed: `from app_int.main import round_number` imported, callable(round_number) is True."
+    },
+    {
+      "name": "AC-2",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac2_default_ndigits_rounds_to_integer passed: round_number(3.7)==4, round_number(3.2)==3."
+    },
+    {
+      "name": "AC-3",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac3_positive_ndigits passed: round_number(3.14159,2)==3.14, round_number(3.14159,3)==3.142."
+    },
+    {
+      "name": "AC-4",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac4_negative_ndigits passed: (1234,-2)->1200, (1250,-2)->1300, (-1250,-2)->-1300."
+    },
+    {
+      "name": "AC-5",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac5_ties_half_away_from_zero[4 params] passed: 2.5->3, 0.5->1, -2.5->-3, -0.5->-1."
+    },
+    {
+      "name": "AC-6",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac6_ties_at_fractional_digits passed: (0.125,2)->0.13, (-0.125,2)->-0.13."
+    },
+    {
+      "name": "AC-7",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac7_rounds_displayed_decimal_value passed: (2.675,2)->2.68, (1.005,2)->1.01."
+    },
+    {
+      "name": "AC-8",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac8_return_types passed: type(round_number(2.4)) is int, type(round_number(1250,-2)) is int, type(round_number(2.4,1)) is float."
+    },
+    {
+      "name": "AC-9",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac9_int_input passed: round_number(7)==7; round_number(7,2)==7.0 and is float."
+    },
+    {
+      "name": "AC-10",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac10_bad_value_type_raises_type_error[3 params] passed: '2.5', None, True each raise TypeError."
+    },
+    {
+      "name": "AC-11",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac11_bad_ndigits_type_raises_type_error[3 params] passed: ndigits=1.0, '1', True each raise TypeError."
+    },
+    {
+      "name": "AC-12",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac12_non_finite_raises_value_error[3 params] passed: nan, inf, -inf each raise ValueError."
+    },
+    {
+      "name": "AC-13",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac13_deterministic_and_silent passed: two calls round_number(2.5) both return 3; capsys out=='' and err==''."
+    },
+    {
+      "name": "AC-14",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac14_annotations_and_docstring passed: inspect.get_annotations has value, ndigits, return; docstring non-empty and contains 'half away from zero'."
+    },
+    {
+      "name": "AC-15",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py::test_ac15_no_runtime_dependencies passed: tomllib parse of pyproject.toml gives project.dependencies == []; `git diff main -- pyproject.toml` is empty."
+    },
+    {
+      "name": "AC-16",
+      "result": "PASS",
+      "detail": "tests/test_main.py::test_health_check_reports_ok and ::test_add_returns_the_sum passed; `git diff main -- tests/test_main.py` is empty (file unchanged)."
+    },
+    {
+      "name": "AC-17",
+      "result": "PASS",
+      "detail": "`uv run pytest -q` -> '26 passed in 0.03s', exit 0. `uv run ruff check .` -> 'All checks passed!', exit 0."
+    },
+    {
+      "name": "AC-18",
+      "result": "PASS",
+      "detail": "tests/test_round_number.py imports round_number from app_int.main and exercises it (24 test cases)."
+    },
+    {
+      "name": "extra: edge cases (not an AC)",
+      "result": "PASS",
+      "detail": "Ad-hoc: round_number(10**30,-2)==10**30, round_number(1e300) returns exact int 10**300 without InvalidOperation, round_number(0.1,50)==0.1, round_number(-1.5)==-2, round_number(5,-1)==10, round_number(-5,-1)==-10; decimal.getcontext().prec still 28 afterwards."
+    }
+  ]
+}
