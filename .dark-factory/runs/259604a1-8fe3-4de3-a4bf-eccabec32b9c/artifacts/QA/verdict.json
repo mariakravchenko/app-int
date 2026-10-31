@@ -1,0 +1,19 @@
+{
+  "criteria": [
+    {"criterion_id": "AC-1", "result": "PASS", "notes": "subtract imports and is callable."},
+    {"criterion_id": "AC-2", "result": "PASS", "notes": "Parameters exactly ['a', 'b']; positional call works."},
+    {"criterion_id": "AC-3", "result": "PASS", "notes": "5-3==2, 10-4==6."},
+    {"criterion_id": "AC-4", "result": "PASS", "notes": "-2, 7, -7, 0 as expected."},
+    {"criterion_id": "AC-5", "result": "PASS", "notes": "int annotations on a, b, return; non-empty docstring."},
+    {"criterion_id": "AC-6", "result": "PASS", "notes": "QA added tests/test_subtract.py (6 parametrized cases), all pass."},
+    {"criterion_id": "AC-7", "result": "PASS", "notes": "Existing tests unchanged and passing."},
+    {"criterion_id": "AC-8", "result": "PASS", "notes": "8 passed, exit 0."},
+    {"criterion_id": "AC-9", "result": "PASS", "notes": "ruff: All checks passed, exit 0."},
+    {"criterion_id": "AC-10", "result": "PASS", "notes": "pyproject.toml identical to main."},
+    {"criterion_id": "AC-11", "result": "PASS", "notes": "Defined in src/app_int/main.py; no top-level app_int/."}
+  ],
+  "issues": [
+    {"severity": "minor", "description": "The Developer added no test for subtract because their write scope is src/** only; QA added tests/test_subtract.py to satisfy R6. Adjust the pipeline if the Developer is expected to write tests."}
+  ],
+  "status": "PASS"
+}

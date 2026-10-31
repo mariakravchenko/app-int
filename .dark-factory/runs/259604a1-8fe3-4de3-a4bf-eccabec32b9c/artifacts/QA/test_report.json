@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {"name": "AC-1: import and callability of subtract", "result": "PASS", "detail": "uv run python -c \"from app_int.main import subtract; print(callable(subtract))\" -> 'callable True'."},
+    {"name": "AC-2: signature has exactly params a, b; positional call works", "result": "PASS", "detail": "inspect.signature(subtract) -> (a: 'int', b: 'int') -> 'int'; list(parameters) == ['a', 'b']; subtract(5, 3) returned 2 without raising."},
+    {"name": "AC-3: subtract(5,3)==2 and subtract(10,4)==6", "result": "PASS", "detail": "Ad-hoc assertions passed; also tests/test_subtract.py::test_subtract_returns_the_difference[5-3-2] and [10-4-6] passed."},
+    {"name": "AC-4: negative/zero cases", "result": "PASS", "detail": "subtract(3,5)==-2, subtract(7,0)==7, subtract(0,7)==-7, subtract(0,0)==0 all asserted true ad hoc and via parametrized pytest cases [3-5--2], [7-0-7], [0-7--7], [0-0-0] (all passed)."},
+    {"name": "AC-5: int annotations and non-empty docstring", "result": "PASS", "detail": "subtract.__annotations__ == {'a': 'int', 'b': 'int', 'return': 'int'} (string form due to existing 'from __future__ import annotations'); subtract.__doc__ == 'Return the difference of two integers (a minus b).'; source file is src/app_int/main.py."},
+    {"name": "AC-6: a test under tests/ calls subtract and asserts on its result", "result": "PASS", "detail": "Developer added no tests (write scope src/** only). QA added tests/test_subtract.py with parametrized test_subtract_returns_the_difference asserting subtract(a, b) == expected for 6 cases; pytest collected 6 items from it and all passed."},
+    {"name": "AC-7: existing behaviour and tests intact", "result": "PASS", "detail": "health_check() -> {'status': 'ok'}; add(2,3) -> 5; tests/test_main.py unchanged vs main and its two tests (test_health_check_reports_ok, test_add_returns_the_sum) passed."},
+    {"name": "AC-8: uv run pytest -q exits 0", "result": "PASS", "detail": "'8 passed in 0.01s'; exit status 0."},
+    {"name": "AC-9: uv run ruff check . exits 0", "result": "PASS", "detail": "'All checks passed!'; exit status 0 (including the new test file)."},
+    {"name": "AC-10: pyproject.toml dependencies unchanged", "result": "PASS", "detail": "git diff main -- pyproject.toml produced 0 lines. (A uv.lock generated as a side effect of 'uv run' was untracked on main and was deleted.)"},
+    {"name": "AC-11: subtract lives in src/app_int/main.py; no top-level app_int/", "result": "PASS", "detail": "inspect.getsourcefile(subtract) ends with src/app_int/main.py; 'ls -d app_int' -> 'No such file or directory'; git diff main --stat shows only src/app_int/main.py among source changes."}
+  ]
+}
