@@ -1,0 +1,60 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "[R-1, AC-1, A-1] Add `round_number` to the existing module `src/app_int/main.py`. Do not create a new module and do not edit `src/app_int/__init__.py`."
+    },
+    {
+      "id": "C-2",
+      "description": "[R-2, AC-14, N-1] The signature must be exactly `round_number(value: int | float, ndigits: int = 0) -> int | float`. Both parameters and the return value must have annotations."
+    },
+    {
+      "id": "C-3",
+      "description": "[N-2, AC-15] Use only the standard library (`decimal`, `math`). Do not modify `pyproject.toml`, including the empty `dependencies` list."
+    },
+    {
+      "id": "C-4",
+      "description": "[R-6, AC-5, AC-6] Round with `decimal.ROUND_HALF_UP` (half away from zero). Do not use the built-in `round()` for the rounding step, and do not use ROUND_HALF_EVEN or ROUND_HALF_DOWN."
+    },
+    {
+      "id": "C-5",
+      "description": "[R-7, AC-7] Convert float input to Decimal from its shortest representation (`repr`/`str`), never with `Decimal(float)` directly. Convert int input with `Decimal(int)`."
+    },
+    {
+      "id": "C-6",
+      "description": "[R-8, AC-8, AC-9] Return `int` when `ndigits <= 0` and `float` when `ndigits > 0`, whatever the input type."
+    },
+    {
+      "id": "C-7",
+      "description": "[R-10, R-11, AC-10, AC-11] Raise `TypeError` when `value` is a bool or not an int/float, and when `ndigits` is a bool or not an int. Check bool explicitly before the int check. Validate in this order: value type, then ndigits type, then finiteness."
+    },
+    {
+      "id": "C-8",
+      "description": "[R-12, AC-12] Raise `ValueError` for NaN, +inf and -inf `value`. Check with `math.isfinite` after the type checks."
+    },
+    {
+      "id": "C-9",
+      "description": "[R-13, AC-13] The function must be pure: no print or logging, no I/O, no module-level caches. Any decimal precision change must use a scoped `decimal.localcontext()`. Never mutate `decimal.getcontext()` globally."
+    },
+    {
+      "id": "C-10",
+      "description": "[Design decision] Set the quantize precision high enough that large ints, large floats or large positive `ndigits` never raise `decimal.InvalidOperation`. Use a local context with prec >= max(28, integer digits of the value + max(ndigits, 0) + margin)."
+    },
+    {
+      "id": "C-11",
+      "description": "[N-1, AC-14] The docstring must be non-empty and contain the literal phrase \"half away from zero\". It should also describe the return-type rule, negative `ndigits`, and the exceptions raised."
+    },
+    {
+      "id": "C-12",
+      "description": "[N-3, AC-16] Do not change `health_check`, `add`, or `tests/test_main.py`."
+    },
+    {
+      "id": "C-13",
+      "description": "[Write scope] DEVELOPMENT edits only under `src/**`. Tests for `round_number` (AC-18) are written by QA under `tests/**`, e.g. a new `tests/test_round_number.py`."
+    },
+    {
+      "id": "C-14",
+      "description": "[N-4, AC-17] `uv run pytest -q` and `uv run ruff check .` must both exit 0. Imports must satisfy Ruff rules E, F, I, UP and B: stdlib imports after `from __future__ import annotations`, isort-ordered, and lines no longer than 100 characters."
+    }
+  ]
+}
