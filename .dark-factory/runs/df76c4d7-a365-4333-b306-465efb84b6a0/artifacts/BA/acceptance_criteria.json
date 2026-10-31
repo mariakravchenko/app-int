@@ -1,0 +1,68 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import divide` succeeds and `divide` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2] `divide` accepts two positional arguments in (dividend, divisor) order: `divide(10, 2) == 5` and `divide(2, 10) == 0.2`."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3] `divide(6, 3) == 2` evaluates to True."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R3] `divide(7, 2) == 3.5` evaluates to True (true division, not floor division)."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R4] `divide(-6, 3) == -2` and `divide(6, -4) == -1.5` both evaluate to True."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R5] `divide(0, 5) == 0` evaluates to True."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R6] Calling `divide(1, 0)` raises `ZeroDivisionError`."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R7] `divide.__doc__` is a non-empty string."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R8] `add(2, 3) == 5` and `health_check() == {\"status\": \"ok\"}` still evaluate to True."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R9] A test function under `tests/` calls `divide` with a non-zero divisor and asserts the returned quotient."
+    },
+    {
+      "id": "AC-11",
+      "description": "[R10] A test function under `tests/` asserts a non-integer quotient from `divide` (e.g. `divide(7, 2) == 3.5`)."
+    },
+    {
+      "id": "AC-12",
+      "description": "[R11] A test function under `tests/` asserts that `divide(<x>, 0)` raises `ZeroDivisionError` (e.g. via `pytest.raises(ZeroDivisionError)`)."
+    },
+    {
+      "id": "AC-13",
+      "description": "[R12] `uv run pytest -q` exits with status 0 and reports no failures or errors."
+    },
+    {
+      "id": "AC-14",
+      "description": "[R13] `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-15",
+      "description": "[R14] `divide`'s signature annotates both parameters and the return type (`inspect.signature(divide)` shows a non-empty annotation for `a`, `b`, and the return)."
+    },
+    {
+      "id": "AC-16",
+      "description": "[R15] The `dependencies` list in `pyproject.toml` is unchanged (still empty)."
+    }
+  ]
+}
