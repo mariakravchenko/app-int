@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "name": "AC-1",
+      "result": "PASS",
+      "detail": "uv run python: `from app_int.main import divide`; callable(divide) -> True"
+    },
+    {
+      "name": "AC-2",
+      "result": "PASS",
+      "detail": "divide(10, 2) == 5 -> True; divide(2, 10) == 0.2 -> True"
+    },
+    {
+      "name": "AC-3",
+      "result": "PASS",
+      "detail": "divide(6, 3) == 2 -> True"
+    },
+    {
+      "name": "AC-4",
+      "result": "PASS",
+      "detail": "divide(7, 2) == 3.5 -> True"
+    },
+    {
+      "name": "AC-5",
+      "result": "PASS",
+      "detail": "divide(-6, 3) == -2 -> True; divide(6, -4) == -1.5 -> True"
+    },
+    {
+      "name": "AC-6",
+      "result": "PASS",
+      "detail": "divide(0, 5) == 0 -> True"
+    },
+    {
+      "name": "AC-7",
+      "result": "PASS",
+      "detail": "divide(1, 0) raised ZeroDivisionError('division by zero')"
+    },
+    {
+      "name": "AC-8",
+      "result": "PASS",
+      "detail": "divide.__doc__ == 'Return the quotient of a divided by b; a zero divisor raises ZeroDivisionError.'"
+    },
+    {
+      "name": "AC-9",
+      "result": "PASS",
+      "detail": "add(2, 3) == 5 -> True; health_check() == {'status': 'ok'} -> True"
+    },
+    {
+      "name": "AC-10",
+      "result": "PASS",
+      "detail": "tests/test_main.py::test_divide_returns_exact_quotient asserts divide(6, 3) == 2 and divide(10, 2) == 5; passed"
+    },
+    {
+      "name": "AC-11",
+      "result": "PASS",
+      "detail": "tests/test_main.py::test_divide_returns_non_integer_quotient asserts divide(7, 2) == 3.5; passed"
+    },
+    {
+      "name": "AC-12",
+      "result": "PASS",
+      "detail": "tests/test_main.py::test_divide_by_zero_raises uses pytest.raises(ZeroDivisionError) around divide(1, 0); passed"
+    },
+    {
+      "name": "AC-13",
+      "result": "PASS",
+      "detail": "`uv run pytest -q` -> '9 passed in 0.01s', exit status 0"
+    },
+    {
+      "name": "AC-14",
+      "result": "PASS",
+      "detail": "`uv run ruff check .` -> 'All checks passed!', exit status 0"
+    },
+    {
+      "name": "AC-15",
+      "result": "PASS",
+      "detail": "inspect.signature(divide) -> (a: 'float', b: 'float') -> 'float'; a, b and return annotations all non-empty"
+    },
+    {
+      "name": "AC-16",
+      "result": "PASS",
+      "detail": "`git diff main -- pyproject.toml` is empty; dependencies = [] unchanged"
+    }
+  ]
+}

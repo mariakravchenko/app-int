@@ -1,0 +1,91 @@
+{
+  "criteria": [
+    {
+      "criterion_id": "AC-1",
+      "result": "PASS",
+      "notes": "uv run python: `from app_int.main import divide`; callable(divide) -> True"
+    },
+    {
+      "criterion_id": "AC-2",
+      "result": "PASS",
+      "notes": "divide(10, 2) == 5 -> True; divide(2, 10) == 0.2 -> True"
+    },
+    {
+      "criterion_id": "AC-3",
+      "result": "PASS",
+      "notes": "divide(6, 3) == 2 -> True"
+    },
+    {
+      "criterion_id": "AC-4",
+      "result": "PASS",
+      "notes": "divide(7, 2) == 3.5 -> True"
+    },
+    {
+      "criterion_id": "AC-5",
+      "result": "PASS",
+      "notes": "divide(-6, 3) == -2 -> True; divide(6, -4) == -1.5 -> True"
+    },
+    {
+      "criterion_id": "AC-6",
+      "result": "PASS",
+      "notes": "divide(0, 5) == 0 -> True"
+    },
+    {
+      "criterion_id": "AC-7",
+      "result": "PASS",
+      "notes": "divide(1, 0) raised ZeroDivisionError('division by zero')"
+    },
+    {
+      "criterion_id": "AC-8",
+      "result": "PASS",
+      "notes": "divide.__doc__ == 'Return the quotient of a divided by b; a zero divisor raises ZeroDivisionError.'"
+    },
+    {
+      "criterion_id": "AC-9",
+      "result": "PASS",
+      "notes": "add(2, 3) == 5 -> True; health_check() == {'status': 'ok'} -> True"
+    },
+    {
+      "criterion_id": "AC-10",
+      "result": "PASS",
+      "notes": "tests/test_main.py::test_divide_returns_exact_quotient asserts divide(6, 3) == 2 and divide(10, 2) == 5; passed"
+    },
+    {
+      "criterion_id": "AC-11",
+      "result": "PASS",
+      "notes": "tests/test_main.py::test_divide_returns_non_integer_quotient asserts divide(7, 2) == 3.5; passed"
+    },
+    {
+      "criterion_id": "AC-12",
+      "result": "PASS",
+      "notes": "tests/test_main.py::test_divide_by_zero_raises uses pytest.raises(ZeroDivisionError) around divide(1, 0); passed"
+    },
+    {
+      "criterion_id": "AC-13",
+      "result": "PASS",
+      "notes": "`uv run pytest -q` -> '9 passed in 0.01s', exit status 0"
+    },
+    {
+      "criterion_id": "AC-14",
+      "result": "PASS",
+      "notes": "`uv run ruff check .` -> 'All checks passed!', exit status 0"
+    },
+    {
+      "criterion_id": "AC-15",
+      "result": "PASS",
+      "notes": "inspect.signature(divide) -> (a: 'float', b: 'float') -> 'float'; a, b and return annotations all non-empty"
+    },
+    {
+      "criterion_id": "AC-16",
+      "result": "PASS",
+      "notes": "`git diff main -- pyproject.toml` is empty; dependencies = [] unchanged"
+    }
+  ],
+  "issues": [
+    {
+      "severity": "minor",
+      "description": "Developer added no tests (expected per write scope); QA added divide tests to tests/test_main.py: exact quotient, non-integer quotient, zero divisor, and parametrized order/sign/zero-dividend cases."
+    }
+  ],
+  "status": "PASS"
+}
