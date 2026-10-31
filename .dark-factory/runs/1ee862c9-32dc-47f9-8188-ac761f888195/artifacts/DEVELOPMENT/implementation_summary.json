@@ -1,0 +1,10 @@
+{
+  "summary": "Added a public module-level function multiply(a: int, b: int) -> int to src/app_int/main.py (import path app_int.main), placed directly after add. It has a one-line docstring in the same style as add and returns a * b, with no validation or coercion. health_check, add, the module docstring and the __future__ import are unchanged, and pyproject.toml was not touched. No test files were created or edited, because tests/** is QA's write scope (C-6); QA will add the multiply test to tests/test_main.py. Checks run locally: `uv run ruff check .` reported 'All checks passed!' and `uv run pytest -q` reported '2 passed' (the existing tests). An ad-hoc python -c check gave multiply(2,3)=6, multiply(0,5)=0, multiply(-2,3)=-6 and multiply(-2,-3)=6, with signature (a: 'int', b: 'int') -> 'int'.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "Appended a new function multiply(a: int, b: int) -> int (docstring 'Return the product of two integers.', body 'return a * b') after add, separated by two blank lines."
+    }
+  ],
+  "tests_added": []
+}
