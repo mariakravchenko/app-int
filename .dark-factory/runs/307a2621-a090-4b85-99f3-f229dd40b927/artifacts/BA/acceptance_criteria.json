@@ -1,0 +1,56 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[REQ-1] `from app_int.main import subtract` succeeds without error, and `subtract` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[REQ-2] `inspect.signature(subtract)` lists exactly two parameters, named `a` and `b`, in that order."
+    },
+    {
+      "id": "AC-3",
+      "description": "[REQ-3] `subtract(5, 3)` returns `2`."
+    },
+    {
+      "id": "AC-4",
+      "description": "[REQ-4] `subtract(3, 5)` returns `-2`."
+    },
+    {
+      "id": "AC-5",
+      "description": "[REQ-5] `subtract(0, 0)` returns `0`, `subtract(-2, -3)` returns `1`, and `subtract(7, 0)` returns `7`."
+    },
+    {
+      "id": "AC-6",
+      "description": "[REQ-6] `subtract.__doc__` is a non-empty string."
+    },
+    {
+      "id": "AC-7",
+      "description": "[REQ-7] `subtract.__annotations__` maps `a` to `int`, `b` to `int`, and `return` to `int` (string or type form)."
+    },
+    {
+      "id": "AC-8",
+      "description": "[REQ-8] At least one test function under `tests/` calls `subtract` and asserts on its return value, and that test passes under `uv run pytest -q`."
+    },
+    {
+      "id": "AC-9",
+      "description": "[REQ-9] At least one test under `tests/` asserts a `subtract` call whose expected result is negative."
+    },
+    {
+      "id": "AC-10",
+      "description": "[REQ-10] `health_check()` returns `{\"status\": \"ok\"}`, `add(2, 3)` returns `5`, and the pre-existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum` are still present and pass."
+    },
+    {
+      "id": "AC-11",
+      "description": "[REQ-11] `uv run pytest -q` exits with status 0."
+    },
+    {
+      "id": "AC-12",
+      "description": "[REQ-11] `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-13",
+      "description": "[REQ-12] The `dependencies` list in `pyproject.toml` is unchanged from the base branch (still empty)."
+    }
+  ]
+}
