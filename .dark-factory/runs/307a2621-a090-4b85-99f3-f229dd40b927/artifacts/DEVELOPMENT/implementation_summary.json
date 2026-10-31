@@ -1,0 +1,10 @@
+{
+  "summary": "Added a public module-level function subtract(a: int, b: int) -> int to src/app_int/main.py, placed directly after add. It has a one-line docstring and returns a - b using native integer subtraction, with no validation or side effects (C-1, C-2, C-3). health_check, add, the module docstring and the __future__ import are unchanged (C-4). No other files were modified (C-5, C-6). Per the design's write-scope split, the subtract tests are QA's job under tests/, so the Developer added none. Checks run locally: `uv run pytest -q` (2 existing tests passed), `uv run ruff check .` (all checks passed), and a manual spot-check showing subtract(5,3)=2, subtract(3,5)=-2, subtract(0,0)=0, subtract(-2,-3)=1, subtract(7,0)=7, with signature (a: 'int', b: 'int') -> 'int'. Running uv created an untracked uv.lock, which was deleted so pyproject/lock state stays the same (C-5).",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: added subtract(a: int, b: int) -> int after add"
+    }
+  ],
+  "tests_added": []
+}
