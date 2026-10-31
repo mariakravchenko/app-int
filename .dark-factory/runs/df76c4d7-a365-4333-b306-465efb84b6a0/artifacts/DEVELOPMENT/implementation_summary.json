@@ -1,0 +1,10 @@
+{
+  "summary": "Added divide(a: float, b: float) -> float to src/app_int/main.py, placed after add. It returns a / b using true division, has a one-line docstring, and does not handle a zero divisor, so Python's native ZeroDivisionError reaches the caller unchanged. add, health_check, pyproject.toml, CI and Dark Factory config were not touched. Per C-7 and the Developer write scope (src/** only), tests/test_main.py was not edited; QA writes the divide tests set out in design.md. Run locally: 'uv run pytest -q' (2 existing tests passed) and 'uv run ruff check .' (all checks passed). Manual check: divide(6,3)=2.0, divide(7,2)=3.5, divide(2,10)=0.2, divide(-6,3)=-2.0, divide(6,-4)=-1.5, divide(0,5)=0.0; divide(1,0) and divide(1.0,0.0) both raise ZeroDivisionError.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "Added module-level function divide(a: float, b: float) -> float that returns a / b, with a docstring noting that a zero divisor raises ZeroDivisionError."
+    }
+  ],
+  "tests_added": []
+}
