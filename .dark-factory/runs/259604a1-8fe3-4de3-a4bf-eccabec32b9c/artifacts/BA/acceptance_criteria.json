@@ -1,0 +1,48 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import subtract` succeeds, and `subtract` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2] `inspect.signature(subtract)` lists exactly two parameters, named `a` then `b`, and `subtract(5, 3)` called positionally does not raise."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3] `subtract(5, 3) == 2` and `subtract(10, 4) == 6`."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R4] `subtract(3, 5) == -2`, `subtract(7, 0) == 7`, `subtract(0, 7) == -7`, and `subtract(0, 0) == 0`."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R5] In `src/app_int/main.py`, `subtract` has `int` annotations on `a` and `b`, an `int` return annotation, and a non-empty docstring (`subtract.__doc__` is not None or empty)."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R6] At least one test function in a file under `tests/` calls `subtract` and asserts on its return value, and pytest collects and passes it."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R7] `health_check() == {\"status\": \"ok\"}` and `add(2, 3) == 5` still hold; the existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum` are present and pass."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R8] `uv run pytest -q` exits with status 0."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R9] `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R10] The `dependencies` and `[dependency-groups]` sections of `pyproject.toml` are the same as on the base branch."
+    },
+    {
+      "id": "AC-11",
+      "description": "[A1] `subtract` is defined in `src/app_int/main.py`, and no top-level `app_int/` directory has been added to the repository."
+    }
+  ]
+}
