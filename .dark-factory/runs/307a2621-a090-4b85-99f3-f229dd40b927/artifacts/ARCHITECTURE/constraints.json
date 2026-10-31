@@ -1,0 +1,36 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "Add `subtract` as a module-level public function in the existing file `src/app_int/main.py` (BA A-1). Do not create a top-level `app_int/` directory or a new production module. Traces to REQ-1 / AC-1."
+    },
+    {
+      "id": "C-2",
+      "description": "`subtract` must have exactly two positional-or-keyword parameters, `a` then `b`, annotated `int`, with return annotation `int`. No defaults, *args, **kwargs, or keyword-only/positional-only markers. It must have a non-empty docstring. Traces to REQ-2, REQ-6, REQ-7 / AC-2, AC-6, AC-7."
+    },
+    {
+      "id": "C-3",
+      "description": "`subtract(a, b)` must return `a - b` using native integer subtraction, with no input validation, type coercion, error handling, side effects, or I/O. Traces to REQ-3, REQ-4, REQ-5 and BA assumptions A-2, A-3 / AC-3, AC-4, AC-5."
+    },
+    {
+      "id": "C-4",
+      "description": "Do not modify `health_check`, `add`, the module docstring, or the `from __future__ import annotations` line in `src/app_int/main.py`. Do not remove or rename the existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum`, or change what they assert. Traces to REQ-10 / AC-10."
+    },
+    {
+      "id": "C-5",
+      "description": "Do not modify `pyproject.toml`, `uv.lock`, `src/app_int/__init__.py`, `README.md`, CI workflows, or Dark Factory configuration. In particular, the `dependencies` list must stay empty. Traces to REQ-12 / AC-13 and the BA's out-of-scope list."
+    },
+    {
+      "id": "C-6",
+      "description": "Role write scopes: the Developer edits only `src/**` (specifically `src/app_int/main.py`) and must not touch `tests/`. QA adds the `subtract` tests only under `tests/**`. Architectural decision following from the pipeline role definitions."
+    },
+    {
+      "id": "C-7",
+      "description": "The tests under `tests/` must include at least one test function that calls `subtract` and asserts its return value, and at least one assertion whose expected result is negative (e.g. `subtract(3, 5) == -2`). Use only the existing `pytest` dev dependency. Traces to REQ-8, REQ-9 / AC-8, AC-9."
+    },
+    {
+      "id": "C-8",
+      "description": "All changes must pass `uv run pytest -q` and `uv run ruff check .` (line length 100; rule sets E, F, I, UP, B). Import lists must stay isort-sorted, e.g. `from app_int.main import add, health_check, subtract`. Traces to REQ-11 / AC-11, AC-12."
+    }
+  ]
+}
