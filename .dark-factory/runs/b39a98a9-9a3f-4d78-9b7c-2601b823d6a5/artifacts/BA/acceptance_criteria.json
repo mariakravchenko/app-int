@@ -1,0 +1,16 @@
+{
+  "criteria": [
+    {"id": "AC-1", "description": "[R1] `from app_int.main import round_currency` succeeds and `round_currency` is callable."},
+    {"id": "AC-2", "description": "[R2] For every input in these criteria, Decimal(str(round_currency(x))) has at most 2 digits after the decimal point. Results are compared by their decimal value, as Decimal(str(result))."},
+    {"id": "AC-3", "description": "[R3] round_currency(Decimal('2.345')) equals Decimal('2.35'), and round_currency(Decimal('2.335')) equals Decimal('2.34') (round-half-up, not banker's rounding)."},
+    {"id": "AC-4", "description": "[R4] round_currency(Decimal('-2.345')) equals Decimal('-2.35'), and round_currency(-2.345) (float) equals Decimal('-2.35')."},
+    {"id": "AC-5", "description": "[R5] round_currency(2.344) equals Decimal('2.34'), round_currency(2.346) equals Decimal('2.35'), and round_currency(-2.344) equals Decimal('-2.34')."},
+    {"id": "AC-6", "description": "[R6] With float inputs: round_currency(2.345) equals Decimal('2.35'), round_currency(1.005) equals Decimal('1.01'), round_currency(0.125) equals Decimal('0.13'), and round_currency(2.675) equals Decimal('2.68')."},
+    {"id": "AC-7", "description": "[R7] round_currency(2.3) equals Decimal('2.30'), round_currency(5) equals Decimal('5.00'), round_currency(0) equals Decimal('0.00'), and round_currency(Decimal('19.99')) equals Decimal('19.99')."},
+    {"id": "AC-8", "description": "[R8] round_currency accepts an int (7), a float (7.005) and a decimal.Decimal (Decimal('7.005')) without raising, returning values equal to Decimal('7.00'), Decimal('7.01') and Decimal('7.01')."},
+    {"id": "AC-9", "description": "[R9] health_check() still returns {'status': 'ok'} and add(2, 3) still returns 5."},
+    {"id": "AC-10", "description": "[R10] `uv run pytest -q` exits with status 0 and `uv run ruff check .` exits with status 0."},
+    {"id": "AC-11", "description": "[R11] round_currency.__doc__ is non-empty and contains the phrase 'half-up' (case-insensitive)."},
+    {"id": "AC-12", "description": "[R12] The diff adds no new entries to the runtime dependencies in pyproject.toml."}
+  ]
+}
