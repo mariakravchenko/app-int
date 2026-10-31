@@ -26,6 +26,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
       - name: Install dark-factory
         run: pip install "dark-factory @ git+https://github.com/mariakravchenko/dark-factory.git"
 
