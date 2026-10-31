@@ -16,3 +16,8 @@ def health_check() -> dict[str, str]:
 def add(a: int, b: int) -> int:
     """Return the sum of two integers."""
     return a + b
+
+
+def divide(a: float, b: float) -> float:
+    """Return the quotient of a divided by b; a zero divisor raises ZeroDivisionError."""
+    return a / b
