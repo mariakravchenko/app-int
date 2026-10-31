@@ -1,0 +1,52 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import subtract` succeeds, and `subtract` is defined in src/app_int/main.py."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2] inspect.signature(subtract) has exactly two parameters, named 'a' then 'b', both positional-or-keyword with no defaults."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3] subtract(5, 3) == 2 and subtract(10, 4) == 6."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R4] subtract(2, 5) == -3, subtract(0, 0) == 0, subtract(7, 0) == 7, subtract(-4, -6) == 2, and subtract(-3, 2) == -5."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R5] subtract's annotations are int for parameters 'a' and 'b' and int for the return type (`int` or the string 'int' under `from __future__ import annotations`)."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R6] subtract.__doc__ is a non-empty string."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R7] health_check() == {'status': 'ok'} and add(2, 3) == 5 still hold, and the existing tests in tests/test_main.py are kept and pass."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R8] At least one test function under tests/ imports subtract from app_int.main and asserts on its return value."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R9] The subtract tests include at least one assertion where the expected result is positive and at least one where it is negative, so a b - a implementation would fail them."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R10] `uv run pytest -q` exits with code 0 and reports no failures or errors."
+    },
+    {
+      "id": "AC-11",
+      "description": "[R11] `uv run ruff check .` exits with code 0."
+    },
+    {
+      "id": "AC-12",
+      "description": "[R12] The [project].dependencies and [dependency-groups] sections of pyproject.toml are the same as on the base branch."
+    }
+  ]
+}
