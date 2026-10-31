@@ -1,0 +1,10 @@
+{
+  "summary": "Added module-level subtract(a: int, b: int) -> int to src/app_int/main.py directly after add, with a one-line docstring, returning a - b (no validation/coercion). The existing 'from __future__ import annotations', health_check and add are unchanged; no top-level app_int/ directory was created and pyproject.toml/uv.lock are untouched (a uv.lock generated as a side effect of 'uv run' was deleted). No test files were written: this role's write scope is limited to src/**, and the repo README assigns tests/ to QA, so the C-7 tests in tests/test_main.py (import 'add, health_check, subtract'; cases subtract(5,3)==2, subtract(10,4)==6, subtract(3,5)==-2, subtract(7,0)==7, subtract(0,7)==-7, subtract(0,0)==0) are left for QA. Checks run locally: 'uv run pytest -q' (2 passed, the existing tests), 'uv run ruff check .' (all checks passed), plus an ad-hoc python -c script asserting all six AC-3/AC-4 cases above (passed).",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: added subtract(a: int, b: int) -> int after add, returning a - b, with docstring 'Return the difference of two integers (a minus b).'"
+    }
+  ],
+  "tests_added": []
+}
