@@ -1,0 +1,10 @@
+{
+  "summary": "Added round_currency(amount: int | float | Decimal) -> Decimal to src/app_int/main.py. It rounds to 2 decimal places using decimal.ROUND_HALF_UP (ties away from zero), which the requester confirmed directly in the clarification answer ('round-half-up (ties away from zero)'). Float inputs are converted with Decimal(str(amount)); int and Decimal inputs go through Decimal(amount). The result is quantized to Decimal('0.01') with the rounding mode passed explicitly, so the decimal context is never read or changed. The docstring contains 'half-up'. Only the standard library is used; health_check and add are unchanged; pyproject.toml is untouched. Checks run locally: 'uv run ruff check .' passed; 'uv run pytest -q' passed (2 existing tests). I also ran a one-off script (not committed) that checked every example value from AC-3 to AC-8 and confirmed the result stays the same when the caller's context rounding is ROUND_HALF_EVEN. All passed. Tests for round_currency were not added because tests/ is outside the Developer's write scope; QA owns them.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "Added 'from decimal import ROUND_HALF_UP, Decimal', a module-level _CENT = Decimal('0.01') constant, and the public function round_currency."
+    }
+  ],
+  "tests_added": []
+}
