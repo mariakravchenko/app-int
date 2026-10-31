@@ -6,3 +6,4 @@ __pycache__/
 .ruff_cache/
 .dark-factory/runs/
 .DS_Store
+uv.lock
