@@ -1,0 +1,16 @@
+{
+  "constraints": [
+    {"id": "C-1", "description": "[AC-1, R1] Add round_currency as a public module-level function in src/app_int/main.py. Do not create a new module or package."},
+    {"id": "C-2", "description": "[AC-9, R9] Do not change the signatures, bodies or behaviour of health_check and add."},
+    {"id": "C-3", "description": "[AC-3, AC-4, R3, R4] Rounding must use decimal.ROUND_HALF_UP (ties away from zero), passed explicitly as the rounding argument to Decimal.quantize. Do not use ROUND_HALF_EVEN, the built-in round(), or any arithmetic like floor(x*100+0.5). This mode is a compliance requirement confirmed by the human requester, as recorded by the BA. Do not change it."},
+    {"id": "C-4", "description": "[AC-4, AC-6, AC-8, R6] Convert float inputs with Decimal(str(amount)). Never use Decimal(amount) on a float, and never round in float arithmetic."},
+    {"id": "C-5", "description": "[AC-2, AC-7] Return a decimal.Decimal quantized to Decimal('0.01'), so it always has exactly 2 digits after the decimal point. Never return a float."},
+    {"id": "C-6", "description": "[AC-8, R8] Accept int, float and decimal.Decimal inputs. The type hint is int | float | Decimal."},
+    {"id": "C-7", "description": "[Design decision] Do not modify or depend on the global or thread-local decimal context (getcontext/setcontext/localcontext). The function must be pure and give the same result whatever the caller's context rounding setting is."},
+    {"id": "C-8", "description": "[AC-11, R11] round_currency must have a non-empty docstring containing the literal text 'half-up'."},
+    {"id": "C-9", "description": "[AC-12, R12] Use only the Python standard library (decimal). Do not change pyproject.toml."},
+    {"id": "C-10", "description": "[AC-10, R10] uv run ruff check . must pass with the repo's config: E, F, I, UP, B rules, line-length 100, and correctly sorted imports."},
+    {"id": "C-11", "description": "[Role write scope] The Developer edits only files under src/. Tests under tests/ are QA's responsibility."},
+    {"id": "C-12", "description": "[Design decision, BA A5] Add no extra validation or special handling for None, str, NaN, infinity, bool or negative zero. These cases are out of scope."}
+  ]
+}
