@@ -1,0 +1,10 @@
+{
+  "summary": "Added a top-level subtract(a: int, b: int) -> int function to src/app_int/main.py, right after add. It has a one-line docstring like add's and returns a - b, with no validation or side effects. health_check, add, the imports, and the module docstring are unchanged. Per C-5 the Developer's write scope is src/** only, so no files under tests/ were touched. The subtract tests (design.md section 2) are QA's job. Checks run locally: `uv run pytest -q` (2 existing tests passed), `uv run ruff check .` (all checks passed), and a one-off python -c check that subtract returns the right values for (5,3)=2, (10,4)=6, (2,5)=-3, (0,0)=0, (7,0)=7, (-4,-6)=2, (-3,2)=-5. That check was not added as a test file.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: added subtract(a: int, b: int) -> int, which returns a - b and has a one-line docstring"
+    }
+  ],
+  "tests_added": []
+}
