@@ -1,0 +1,44 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import subtract` succeeds and `subtract` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2] `inspect.signature(subtract)` lists exactly two parameters, named `a` then `b`, and `subtract(5, 3)` called positionally succeeds."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3] `subtract(5, 3) == 2` and `subtract(3, 5) == -2` (first argument minus second)."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R4] `subtract(0, 0) == 0`, `subtract(7, 0) == 7`, `subtract(0, 7) == -7`, `subtract(-4, -6) == 2`, and `subtract(-4, 6) == -10`."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R5] `subtract` annotates parameters `a` and `b` as `int` and its return type as `int`."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R6] `subtract.__doc__` is a non-empty string."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R7] At least one test function in a file under `tests/` calls `subtract` and asserts on its return value, and that test passes under `uv run pytest -q`."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R8] `health_check() == {\"status\": \"ok\"}` and `add(2, 3) == 5` still hold, and the pre-existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum` still exist and pass."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R9] `uv run pytest -q` exits with status 0 and `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R10] The `dependencies` list in `pyproject.toml` is unchanged (still empty)."
+    }
+  ]
+}
