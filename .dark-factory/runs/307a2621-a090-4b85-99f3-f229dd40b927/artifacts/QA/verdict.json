@@ -1,0 +1,71 @@
+{
+  "criteria": [
+    {
+      "criterion_id": "AC-1",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-2",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-3",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-4",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-5",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-6",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-7",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-8",
+      "result": "PASS",
+      "notes": "Satisfied by QA-authored tests/test_subtract.py (Developer added none, per design write-scope split)."
+    },
+    {
+      "criterion_id": "AC-9",
+      "result": "PASS",
+      "notes": "tests/test_subtract.py::test_subtract_can_return_a_negative_result asserts subtract(3, 5) == -2."
+    },
+    {
+      "criterion_id": "AC-10",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-11",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-12",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    },
+    {
+      "criterion_id": "AC-13",
+      "result": "PASS",
+      "notes": "Verified by direct execution; see test_report.json."
+    }
+  ],
+  "issues": [],
+  "status": "PASS"
+}
