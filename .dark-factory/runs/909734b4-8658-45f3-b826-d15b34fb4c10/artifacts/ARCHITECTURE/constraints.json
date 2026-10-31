@@ -1,0 +1,36 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "Production change is confined to src/app_int/main.py: add a single new top-level function `subtract`. No other file under src/ is modified (in particular src/app_int/__init__.py is unchanged). Traces to R1 and BA out-of-scope list."
+    },
+    {
+      "id": "C-2",
+      "description": "Signature must be exactly two plain positional-or-keyword parameters named `a` then `b`, annotated `int`, with return annotation `int`; no defaults, no *args/**kwargs, no `/` or `*` markers. Traces to AC-2, AC-5."
+    },
+    {
+      "id": "C-3",
+      "description": "Return value must be `a - b` (first argument minus second) with no special-casing of zero or negative inputs and no input validation or type coercion. Traces to AC-3, AC-4, BA assumption A1."
+    },
+    {
+      "id": "C-4",
+      "description": "`subtract` must have a non-empty docstring in the same single-line style as `add`. Traces to AC-6."
+    },
+    {
+      "id": "C-5",
+      "description": "Existing functions `health_check` and `add` and existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum` must not be modified, renamed, or removed. Traces to AC-8."
+    },
+    {
+      "id": "C-6",
+      "description": "pyproject.toml must not change; in particular the runtime `dependencies` list stays empty and no new imports of third-party packages are added to src/. Traces to AC-10."
+    },
+    {
+      "id": "C-7",
+      "description": "Role write scopes: the Developer edits only src/** and must not create or edit test files; the test(s) for `subtract` (AC-7) are added by QA under tests/**, preferably in tests/test_main.py with imports kept in ruff/isort order. Traces to AC-7 and the DEVELOPMENT/QA role write_scope configuration."
+    },
+    {
+      "id": "C-8",
+      "description": "`uv run pytest -q` and `uv run ruff check .` must both exit 0 after each role's change (ruff config: line-length 100, rules E, F, I, UP, B). Traces to AC-9."
+    }
+  ]
+}
