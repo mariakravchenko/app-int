@@ -1,0 +1,10 @@
+{
+  "summary": "Added a pure top-level function `subtract(a: int, b: int) -> int` to src/app_int/main.py, placed immediately after `add`, with a single-line docstring, returning `a - b` with no validation, special-casing, or new imports. health_check and add are unchanged; no other src/ file, pyproject.toml, or test file was touched (tests for subtract are QA's deliverable per C-7). `uv` was not available in the Developer environment, so the quality gate was run with the equivalent tools in a temporary virtualenv (pytest + ruff, project installed editable): `python -m pytest -q` -> 2 passed, exit 0; `ruff check .` -> All checks passed, exit 0. Behaviour was also checked ad hoc in a shell: subtract(5, 3) == 2, subtract(3, 5) == -2, subtract(-4, -6) == 2; signature (a: 'int', b: 'int') -> 'int'.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: added top-level function `subtract(a: int, b: int) -> int` returning `a - b`, after `add`"
+    }
+  ],
+  "tests_added": []
+}
