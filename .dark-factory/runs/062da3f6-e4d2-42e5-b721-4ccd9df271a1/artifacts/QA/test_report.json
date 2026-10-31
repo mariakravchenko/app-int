@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "name": "AC-1: subtract importable and defined in src/app_int/main.py",
+      "result": "PASS",
+      "detail": "uv run python -c 'from app_int.main import subtract; inspect.getsourcefile(subtract)' -> .../src/app_int/main.py. Import succeeded."
+    },
+    {
+      "name": "AC-2: signature is (a, b), positional-or-keyword, no defaults",
+      "result": "PASS",
+      "detail": "inspect.signature(subtract) -> (a: 'int', b: 'int') -> 'int'. tests/test_main.py::test_subtract_signature asserts names == ['a','b'], kind POSITIONAL_OR_KEYWORD, default empty: passed."
+    },
+    {
+      "name": "AC-3: subtract(5, 3) == 2 and subtract(10, 4) == 6",
+      "result": "PASS",
+      "detail": "Direct call returned 2 and 6. tests/test_main.py::test_subtract_returns_positive_difference passed."
+    },
+    {
+      "name": "AC-4: negative, zero and negative-operand cases",
+      "result": "PASS",
+      "detail": "Direct calls: subtract(2,5)=-3, (0,0)=0, (7,0)=7, (-4,-6)=2, (-3,2)=-5. test_subtract_returns_negative_difference and test_subtract_edge_cases passed."
+    },
+    {
+      "name": "AC-5: annotations are int for a, b and return",
+      "result": "PASS",
+      "detail": "subtract.__annotations__ == {'a': 'int', 'b': 'int', 'return': 'int'} (string form because of from __future__ import annotations, which the AC accepts). test_subtract_annotations_are_int passed."
+    },
+    {
+      "name": "AC-6: subtract.__doc__ is a non-empty string",
+      "result": "PASS",
+      "detail": "subtract.__doc__ == 'Return the difference of two integers (a minus b).'. test_subtract_has_docstring passed."
+    },
+    {
+      "name": "AC-7: health_check and add unchanged, existing tests kept and passing",
+      "result": "PASS",
+      "detail": "health_check() -> {'status': 'ok'}, add(2, 3) -> 5. test_health_check_reports_ok and test_add_returns_the_sum are unchanged in tests/test_main.py and pass."
+    },
+    {
+      "name": "AC-8: a test imports subtract from app_int.main and asserts on its return value",
+      "result": "PASS",
+      "detail": "QA added the tests (the Developer's write scope excludes tests/). tests/test_main.py now has 'from app_int.main import add, health_check, subtract' and 6 subtract tests that assert on return values."
+    },
+    {
+      "name": "AC-9: tests have positive and negative expected results, so a b - a mutant fails",
+      "result": "PASS",
+      "detail": "Positive: subtract(5,3)==2. Negative: subtract(2,5)==-3. Mutation check: replaced app_int.main.subtract with a 'return b - a' version in memory and ran the value tests. test_subtract_returns_positive_difference, test_subtract_returns_negative_difference and test_subtract_edge_cases all raised AssertionError."
+    },
+    {
+      "name": "AC-10: uv run pytest -q exits 0",
+      "result": "PASS",
+      "detail": "Output: '8 passed in 0.01s', exit code 0."
+    },
+    {
+      "name": "AC-11: uv run ruff check . exits 0",
+      "result": "PASS",
+      "detail": "Output: 'All checks passed!', exit code 0 (with the new tests in place)."
+    },
+    {
+      "name": "AC-12: pyproject.toml dependencies unchanged from base branch",
+      "result": "PASS",
+      "detail": "git diff main -- pyproject.toml printed nothing, so the file is identical to main."
+    }
+  ]
+}

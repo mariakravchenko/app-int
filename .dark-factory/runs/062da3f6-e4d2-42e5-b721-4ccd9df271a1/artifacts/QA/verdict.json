@@ -1,0 +1,18 @@
+{
+  "criteria": [
+    {"criterion_id": "AC-1", "result": "PASS", "notes": "Import works. Defined in src/app_int/main.py."},
+    {"criterion_id": "AC-2", "result": "PASS", "notes": "Signature is (a, b): positional-or-keyword, no defaults."},
+    {"criterion_id": "AC-3", "result": "PASS", "notes": "Returns 2 and 6."},
+    {"criterion_id": "AC-4", "result": "PASS", "notes": "Returns -3, 0, 7, 2, -5 as expected."},
+    {"criterion_id": "AC-5", "result": "PASS", "notes": "Annotations are 'int' (string form under __future__ annotations)."},
+    {"criterion_id": "AC-6", "result": "PASS", "notes": "Docstring is not empty."},
+    {"criterion_id": "AC-7", "result": "PASS", "notes": "health_check and add behave as before. Existing tests are unchanged and pass."},
+    {"criterion_id": "AC-8", "result": "PASS", "notes": "QA added the subtract tests to tests/test_main.py."},
+    {"criterion_id": "AC-9", "result": "PASS", "notes": "Tests assert positive and negative results. A b - a mutant fails 3 tests."},
+    {"criterion_id": "AC-10", "result": "PASS", "notes": "8 passed, exit 0."},
+    {"criterion_id": "AC-11", "result": "PASS", "notes": "All checks passed, exit 0."},
+    {"criterion_id": "AC-12", "result": "PASS", "notes": "pyproject.toml is identical to main."}
+  ],
+  "issues": [],
+  "status": "PASS"
+}
