@@ -1,0 +1,40 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "Define subtract in src/app_int/main.py only; do not create a top-level app_int/ directory or any new source module (AC-11; the task's 'app_int/main.py' refers to the src-layout package)."
+    },
+    {
+      "id": "C-2",
+      "description": "Signature must be exactly subtract(a: int, b: int) -> int: two positional-or-keyword parameters named a then b, no defaults, no *args/**kwargs, no / or * markers (AC-2, AC-5)."
+    },
+    {
+      "id": "C-3",
+      "description": "Return a - b (first argument minus second); no input validation, coercion, or side effects (AC-3, AC-4; smallest-change decision)."
+    },
+    {
+      "id": "C-4",
+      "description": "subtract must have a non-empty docstring in the same one-line style as add (AC-5)."
+    },
+    {
+      "id": "C-5",
+      "description": "Do not modify or remove health_check, add, test_health_check_reports_ok, or test_add_returns_the_sum (AC-7)."
+    },
+    {
+      "id": "C-6",
+      "description": "Do not modify pyproject.toml or uv.lock; add no new runtime or dev dependencies (AC-10)."
+    },
+    {
+      "id": "C-7",
+      "description": "Add at least one pytest test function under tests/ (preferably tests/test_main.py) that calls subtract and asserts on its return value, covering the AC-3 and AC-4 cases (AC-6)."
+    },
+    {
+      "id": "C-8",
+      "description": "Keep the module's existing 'from __future__ import annotations' and keep test imports isort-ordered (add, health_check, subtract) so the ruff rule set E,F,I,UP,B passes at line-length 100 (AC-9)."
+    },
+    {
+      "id": "C-9",
+      "description": "Both quality-gate commands, 'uv run pytest -q' and 'uv run ruff check .', must exit 0 before the change is considered complete (AC-8, AC-9)."
+    }
+  ]
+}
