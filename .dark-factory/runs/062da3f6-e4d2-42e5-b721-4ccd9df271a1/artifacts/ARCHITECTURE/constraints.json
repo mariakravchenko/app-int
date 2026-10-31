@@ -1,0 +1,40 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "[AC-1, AC-2, AC-5] Define subtract as a top-level function in src/app_int/main.py with signature `subtract(a: int, b: int) -> int`: exactly two positional-or-keyword parameters, no defaults, no *args/**kwargs, and no positional-only or keyword-only markers. Keep the existing `from __future__ import annotations`."
+    },
+    {
+      "id": "C-2",
+      "description": "[AC-3, AC-4] subtract must return exactly `a - b` (operand order a minus b), with no input validation, coercion, or side effects."
+    },
+    {
+      "id": "C-3",
+      "description": "[AC-6] subtract must have a non-empty docstring, in the same one-line style as add."
+    },
+    {
+      "id": "C-4",
+      "description": "[AC-7] Do not change the behaviour or signatures of health_check() and add(), and keep the existing tests in tests/test_main.py unchanged."
+    },
+    {
+      "id": "C-5",
+      "description": "[Architectural decision: pipeline write scopes] DEVELOPMENT may write only under src/**. It must not create or modify any file under tests/. The subtract tests are QA's responsibility (write scope tests/**)."
+    },
+    {
+      "id": "C-6",
+      "description": "[AC-8, AC-9] The subtract tests go in tests/test_main.py. They import subtract from app_int.main and include at least one assertion with a positive expected result (e.g. subtract(5, 3) == 2) and one with a negative expected result (e.g. subtract(2, 5) == -3)."
+    },
+    {
+      "id": "C-7",
+      "description": "[AC-12] Do not modify pyproject.toml. Add no new runtime or dev dependencies, and do not commit uv.lock."
+    },
+    {
+      "id": "C-8",
+      "description": "[Architectural decision: smallest change] Add no new modules, and do not change src/app_int/__init__.py or re-export subtract from the package."
+    },
+    {
+      "id": "C-9",
+      "description": "[AC-10, AC-11] `uv run pytest -q` and `uv run ruff check .` must both exit 0. Imports stay isort-sorted (e.g. `from app_int.main import add, health_check, subtract`), and lines stay at or under 100 characters."
+    }
+  ]
+}
