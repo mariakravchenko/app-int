@@ -1,0 +1,13 @@
+{
+  "constraints": [
+    {"id": "C-1", "description": "Add `multiply` only to the existing module `src/app_int/main.py` (import path `app_int.main`); do not create a new top-level `app_int/` directory or any new module. [AC-1, BA A1]"},
+    {"id": "C-2", "description": "`multiply` must be a module-level `def` with exactly two positional-or-keyword parameters named `a` and `b`, in that order, with no defaults, `*args`, or `**kwargs`. [AC-2]"},
+    {"id": "C-3", "description": "`multiply` must be annotated `a: int, b: int` and return `-> int`, and have a non-empty one-line docstring in the same style as `add`. [AC-6, R5]"},
+    {"id": "C-4", "description": "`multiply` must return `a * b` using the built-in operator, with no input validation, type coercion, or custom error handling. [AC-3, AC-4, AC-5, BA A2/A3]"},
+    {"id": "C-5", "description": "Do not modify `health_check`, `add`, the module docstring, or the `from __future__ import annotations` import in `src/app_int/main.py`. [AC-8, design decision]"},
+    {"id": "C-6", "description": "The DEVELOPMENT role writes only under `src/**`; it must not create or edit files under `tests/`. The `multiply` test is authored by QA in `tests/test_main.py`. [AC-7, role write scopes]"},
+    {"id": "C-7", "description": "The test for `multiply` must import it via `from app_int.main import ...`, keep the import sorted (ruff `I`), assert on return values, and leave `test_health_check_reports_ok` and `test_add_returns_the_sum` unchanged. Any annotation check must account for `from __future__ import annotations` (use `typing.get_type_hints` or accept the string \"int\"). [AC-6, AC-7, AC-8]"},
+    {"id": "C-8", "description": "Do not modify `pyproject.toml`; `[project].dependencies` must remain an empty list and no new runtime or dev dependencies are added. [AC-11, R9]"},
+    {"id": "C-9", "description": "All changes must pass the quality gate: `uv run pytest -q` and `uv run ruff check .` both exit 0 (ruff rules E, F, I, UP, B; line length 100). [AC-9, AC-10]"}
+  ]
+}
