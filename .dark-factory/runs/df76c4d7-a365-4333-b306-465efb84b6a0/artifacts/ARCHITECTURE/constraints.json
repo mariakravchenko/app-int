@@ -1,0 +1,44 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "Add divide to the existing module src/app_int/main.py (import path app_int.main). Do not create a new module or package. Traces to R1, A3, AC-1."
+    },
+    {
+      "id": "C-2",
+      "description": "Signature is divide(a: float, b: float) -> float: exactly two positional parameters, dividend a then divisor b, no defaults or extra parameters, and every parameter plus the return annotated. Traces to R2, R14, AC-2, AC-15."
+    },
+    {
+      "id": "C-3",
+      "description": "Compute the result with Python true division (a / b). Do not use floor division (//), divmod, rounding, or int conversion. Traces to R3, R4, R5, AC-3 to AC-6."
+    },
+    {
+      "id": "C-4",
+      "description": "A zero divisor must raise ZeroDivisionError to the caller. Do not catch it, wrap it in a custom exception, or return None, inf, nan, or any other sentinel. Traces to R6, A2, AC-7."
+    },
+    {
+      "id": "C-5",
+      "description": "divide must have a non-empty docstring in the style of the existing functions. Traces to R7, AC-8."
+    },
+    {
+      "id": "C-6",
+      "description": "Do not change the behaviour, signature, or docstrings of the existing add and health_check functions, and do not change their existing tests. Traces to R8, AC-9."
+    },
+    {
+      "id": "C-7",
+      "description": "The Developer edits only files under src/**. Tests for divide go in tests/test_main.py and are written by QA; they must cover a non-zero-divisor quotient, a non-integer quotient (divide(7, 2) == 3.5), and pytest.raises(ZeroDivisionError) for a zero divisor. Traces to role write scopes, R9 to R11, AC-10 to AC-12."
+    },
+    {
+      "id": "C-8",
+      "description": "Do not modify pyproject.toml. In particular, add no runtime dependencies (dependencies must stay empty). Traces to R15, AC-16."
+    },
+    {
+      "id": "C-9",
+      "description": "uv run pytest -q and uv run ruff check . must both exit 0. Imports must be isort-sorted (ruff I), lines must be at most 100 characters, and there must be no unused imports. Traces to R12, R13, AC-13, AC-14."
+    },
+    {
+      "id": "C-10",
+      "description": "Do not change CI workflows, Dark Factory configuration (.dark-factory.yaml, .dark-factory/), or packaging. Traces to the BA out-of-scope list."
+    }
+  ]
+}
