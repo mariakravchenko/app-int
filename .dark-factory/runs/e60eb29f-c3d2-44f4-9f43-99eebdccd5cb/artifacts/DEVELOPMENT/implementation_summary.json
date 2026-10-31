@@ -1,0 +1,10 @@
+{
+  "summary": "Added round_number(value: int | float, ndigits: int = 0) -> int | float to src/app_int/main.py, following the design. Order of steps: validate value type (bool is rejected first) -> TypeError; validate ndigits type (bool is rejected first) -> TypeError; math.isfinite check -> ValueError. Then it converts to Decimal (float via repr, int via Decimal(int)), quantizes to Decimal(1).scaleb(-ndigits) with ROUND_HALF_UP inside a scoped decimal.localcontext() where prec = max(28, integer digits + max(ndigits, 0) + 2), and returns int when ndigits <= 0 or float when ndigits > 0. The docstring contains the phrase 'half away from zero' and describes the return-type rule, negative ndigits and the exceptions. health_check and add are unchanged. Only stdlib imports were added (math, decimal). Checks I ran locally: `uv run ruff check .` passed, and `uv run pytest -q` passed (2 existing tests). I also ran an ad-hoc interpreter check of the design's worked examples: 3.7->4, (3.14159,3)->3.142, (1250,-2)->1300, (-1250,-2)->-1300, -0.5->-1, ±2.5->±3, (0.125,2)->0.13, (-0.125,2)->-0.13, (1.005,2)->1.01, (2.675,2)->2.68, (7,2)->7.0, (2.4,1)->2.4. It also covered large inputs (10**30, 1e300, (0.1,50)), which raise no InvalidOperation; the TypeError/ValueError cases; and confirmed that the global decimal context precision is still 28 afterwards. These ad-hoc checks were not committed. Per the write scope, I added no test files; QA owns tests/.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: added `import math` and `from decimal import ROUND_HALF_UP, Decimal, localcontext`; added the new function `round_number` below `add`."
+    }
+  ],
+  "tests_added": []
+}
