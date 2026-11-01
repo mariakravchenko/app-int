@@ -1,0 +1,10 @@
+{
+  "summary": "Added round_currency(amount: int | float | Decimal) -> float to src/app_int/main.py. It rounds to 2 decimal places with decimal.ROUND_HALF_UP passed explicitly to quantize, so exact halves round away from zero (the round-half-up mode recorded as requester-confirmed in BA requirements.md). Float input is converted with Decimal(str(amount)), so 1.005 and 2.345 are treated as exact halves. The result is returned as a float. bool and other non-numeric types raise TypeError, and NaN or infinity raise ValueError. The global decimal context is not touched and the built-in round() is not used. Only the stdlib is used, and health_check and add are unchanged. A manual smoke run gave these results: 2.345->2.35, 2.355->2.36, 0.005->0.01, 1.005->1.01, -2.345->-2.35, -0.005->-0.01, 2.344->2.34, 2.346->2.35, -2.344->-2.34, 2.34->2.34, 5->5.0, 0->0.0, Decimal('2.345')->2.35. bool, str, None, NaN and infinity all raised errors. `uv run pytest -q` passed (2 existing tests, exit 0) and `uv run ruff check .` passed (exit 0). Deviation from the design: tests/test_round_currency.py was NOT created, because this role may only write under src/**. QA needs to add it to cover AC-13 / C-10.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: added `from decimal import ROUND_HALF_UP, Decimal`, a module-level _CENT = Decimal('0.01') constant, and the public round_currency function with a docstring stating 2 decimal places and round-half-up (halves away from zero); health_check and add unchanged"
+    }
+  ],
+  "tests_added": []
+}
