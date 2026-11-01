@@ -1,0 +1,52 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1, R2] `from app_int.main import round_currency` succeeds, and `round_currency` is callable with a single positional amount argument."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R3, R10] For inputs Decimal(\"2.345\"), 10, and 2.5, the return value is an instance of decimal.Decimal and its exponent (`result.as_tuple().exponent`) equals -2."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R4] Positive ties round away from zero: round_currency(Decimal(\"2.345\")) == Decimal(\"2.35\"), round_currency(Decimal(\"2.335\")) == Decimal(\"2.34\"), round_currency(Decimal(\"0.005\")) == Decimal(\"0.01\"), round_currency(Decimal(\"1.125\")) == Decimal(\"1.13\")."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R4] Round-half-up is used, not banker's rounding: round_currency(Decimal(\"2.345\")) != Decimal(\"2.34\") and round_currency(Decimal(\"2.325\")) == Decimal(\"2.33\")."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R5] Negative ties round away from zero: round_currency(Decimal(\"-2.345\")) == Decimal(\"-2.35\") and round_currency(Decimal(\"-0.005\")) == Decimal(\"-0.01\")."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R6] Non-tie amounts round to the nearest cent: round_currency(Decimal(\"2.344\")) == Decimal(\"2.34\"), round_currency(Decimal(\"2.346\")) == Decimal(\"2.35\"), round_currency(Decimal(\"-2.344\")) == Decimal(\"-2.34\")."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R7, R9] Already-rounded amounts keep their value: round_currency(10) == Decimal(\"10.00\"), round_currency(2.5) == Decimal(\"2.50\"), round_currency(Decimal(\"2.34\")) == Decimal(\"2.34\"), round_currency(0) == Decimal(\"0.00\")."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R8, R9] Float inputs round by their written decimal value: round_currency(2.345) == Decimal(\"2.35\"), round_currency(1.005) == Decimal(\"1.01\"), round_currency(-2.345) == Decimal(\"-2.35\")."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R11] The existing tests pass unchanged: health_check() == {\"status\": \"ok\"} and add(2, 3) == 5."
+    },
+    {
+      "id": "AC-10",
+      "description": "[N1, N2] round_currency has a docstring that explicitly names the rounding mode (contains \"half-up\" or \"half up\", case-insensitive), and its signature has type annotations for the parameter and the return value."
+    },
+    {
+      "id": "AC-11",
+      "description": "[N3] The `dependencies` list in pyproject.toml is identical to the one on the base branch (no new runtime dependency)."
+    },
+    {
+      "id": "AC-12",
+      "description": "[N4, N5] `uv run pytest -q` and `uv run ruff check .` both exit with status 0, and the test suite contains at least one test for round_currency covering a positive tie, a negative tie, a non-tie, an already-rounded value, and a float input."
+    }
+  ]
+}
