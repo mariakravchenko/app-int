@@ -16,3 +16,8 @@ def health_check() -> dict[str, str]:
 def add(a: int, b: int) -> int:
     """Return the sum of two integers."""
     return a + b
+
+
+def cube(n: int) -> int:
+    """Return ``n`` raised to the third power."""
+    return n * n * n
