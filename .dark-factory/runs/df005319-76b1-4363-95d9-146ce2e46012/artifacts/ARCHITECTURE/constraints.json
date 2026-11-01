@@ -1,0 +1,48 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "[R1, AC-1] round_currency must be a public module-level function defined in src/app_int/main.py and importable as `from app_int.main import round_currency`."
+    },
+    {
+      "id": "C-2",
+      "description": "[R3, R4, requester decision recorded in BA requirements.md] Rounding must use decimal.ROUND_HALF_UP, so exact halves round away from zero for both signs. The rounding mode must be passed explicitly to Decimal.quantize. Do not use the built-in round(), ROUND_HALF_EVEN, or the ambient decimal context's default rounding, and do not modify the global decimal context."
+    },
+    {
+      "id": "C-3",
+      "description": "[R7, AC-4] A float input must be converted to Decimal through its shortest decimal string, Decimal(str(amount)), never through Decimal(amount) directly, so that 1.005 and 2.345 are treated as exact halves."
+    },
+    {
+      "id": "C-4",
+      "description": "[R8, AC-8, design decision] The return type must be float, not str and not Decimal, because Decimal compares to float literals by exact value and would fail equality checks such as == 2.35."
+    },
+    {
+      "id": "C-5",
+      "description": "[R2, design decision] Quantize to exactly 2 decimal places (Decimal('0.01')). The number of decimal places and the rounding mode must not be configurable parameters."
+    },
+    {
+      "id": "C-6",
+      "description": "[A4, design decision] Accept int, float and decimal.Decimal. Raise TypeError for bool and any other type, and raise ValueError for NaN or infinite values. Never return a number for invalid input."
+    },
+    {
+      "id": "C-7",
+      "description": "[R10, AC-10] The round_currency docstring must explicitly state that it rounds to 2 decimal places using round-half-up, with exact halves rounding away from zero."
+    },
+    {
+      "id": "C-8",
+      "description": "[R9, AC-9] health_check and add must not be changed, and tests/test_main.py must not be modified. New round_currency tests go in a new file, tests/test_round_currency.py."
+    },
+    {
+      "id": "C-9",
+      "description": "[Design decision] Use only the Python standard library (decimal). Do not add runtime or dev dependencies, and do not change pyproject.toml or any lockfile."
+    },
+    {
+      "id": "C-10",
+      "description": "[R12, AC-13] The tests must cover at least a positive exact half, a negative exact half, a non-half value, and a value with 2 or fewer decimal places. They must also assert that each result is a number (not a str) whose str() has at most 2 digits after the decimal point."
+    },
+    {
+      "id": "C-11",
+      "description": "[R11, AC-11, AC-12] `uv run pytest -q` and `uv run ruff check .` must both exit with status 0. This includes ruff's isort (I), pyupgrade (UP) and bugbear (B) rules, and the 100-character line limit."
+    }
+  ]
+}
