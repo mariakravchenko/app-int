@@ -1,0 +1,15 @@
+{
+  "constraints": [
+    {"id": "C-1", "description": "(AC-1) Define `square` as a top-level function in src/app_int/main.py, importable via `from app_int.main import square`. Do not create a new module for it."},
+    {"id": "C-2", "description": "(AC-2, AC-7) The signature is exactly `square(n: int) -> int`: one parameter named `n`, no defaults, no *args/**kwargs/keyword-only parameters, and both parameter and return annotations present."},
+    {"id": "C-3", "description": "(AC-3, AC-4, AC-5) Return `n` multiplied by itself as an int. Do not use abs(), input validation, or float conversion that would change the result type for int input."},
+    {"id": "C-4", "description": "(AC-6) `square` must have a non-empty docstring in the same one-line style as `add`."},
+    {"id": "C-5", "description": "(AC-9) Do not modify `health_check`, `add`, the module docstring, or the `from __future__ import annotations` import in src/app_int/main.py, and do not remove or rename the existing tests test_health_check_reports_ok and test_add_returns_the_sum."},
+    {"id": "C-6", "description": "(Architectural decision, pipeline write scopes) DEVELOPMENT changes only src/app_int/main.py (within src/**) and must not edit anything under tests/. QA writes the square test only under tests/ (in tests/test_main.py) and must not edit src/."},
+    {"id": "C-7", "description": "(AC-8) At least one test function in tests/ must import `square` from `app_int.main` and assert square(<positive int>), square(<negative int>), and square(0) against their expected values, e.g. square(3) == 9, square(-3) == 9, square(0) == 0."},
+    {"id": "C-8", "description": "(AC-11) All changed Python must pass `uv run ruff check .` with the configured rules (E, F, I, UP, B; line-length 100), including keeping the names in the test-file import sorted alphabetically."},
+    {"id": "C-9", "description": "(AC-10) `uv run pytest -q` must exit 0 with all existing and new tests passing."},
+    {"id": "C-10", "description": "(AC-12) Do not modify pyproject.toml. The [project] dependencies list stays empty and no runtime or dev dependencies are added."},
+    {"id": "C-11", "description": "(Architectural decision, minimal change) Do not change src/app_int/__init__.py, README.md, or any other file beyond src/app_int/main.py and tests/test_main.py."}
+  ]
+}
