@@ -1,0 +1,7 @@
+Created the architecture artifacts:
+
+- `.dark-factory/runs/4e993e11-5b9f-4363-81ea-280ffb557a90/artifacts/ARCHITECTURE/design.md`
+- `.dark-factory/runs/4e993e11-5b9f-4363-81ea-280ffb557a90/artifacts/ARCHITECTURE/constraints.json`
+
+The design follows the acceptance criteria’s explicit **round-half-up** requirement, which resolves the issue’s rounding-mode uncertainty. Repository source was not changed.
+

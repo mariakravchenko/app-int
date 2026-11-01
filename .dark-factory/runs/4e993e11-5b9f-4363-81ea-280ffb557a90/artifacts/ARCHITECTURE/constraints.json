@@ -1,0 +1,32 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "Implement the public helper in src/app_int/main.py with one positional amount parameter and a Decimal return value; support Decimal, int, and float inputs as specified by AC-1, AC-2, AC-7, and AC-8."
+    },
+    {
+      "id": "C-2",
+      "description": "Quantize to exactly two decimal places using decimal.ROUND_HALF_UP. This mode is explicit in AC-3 through AC-5 and means ties round away from zero; do not use banker's rounding."
+    },
+    {
+      "id": "C-3",
+      "description": "Convert float inputs by their written decimal value (for example via Decimal(str(amount))) before quantizing; required by AC-8."
+    },
+    {
+      "id": "C-4",
+      "description": "Provide parameter and return type annotations and a docstring that explicitly names half-up rounding, as required by AC-10."
+    },
+    {
+      "id": "C-5",
+      "description": "Do not change health_check or add behavior; their existing results must remain intact as required by AC-9."
+    },
+    {
+      "id": "C-6",
+      "description": "Do not add runtime dependencies or alter the dependencies list in pyproject.toml; required by AC-11."
+    },
+    {
+      "id": "C-7",
+      "description": "Add tests covering positive and negative ties, a non-tie, an already-rounded amount, and a float input; preserve existing tests and ensure uv run pytest -q and uv run ruff check . pass as required by AC-12."
+    }
+  ]
+}
