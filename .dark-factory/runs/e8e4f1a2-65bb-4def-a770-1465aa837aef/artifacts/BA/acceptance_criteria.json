@@ -1,0 +1,40 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "(R1, R3) `from app_int.main import cube` succeeds, and `cube` is a callable defined in src/app_int/main.py that accepts exactly one positional argument."
+    },
+    {
+      "id": "AC-2",
+      "description": "(R2) cube(3) returns 27 and cube(2) returns 8."
+    },
+    {
+      "id": "AC-3",
+      "description": "(R2) cube(0) returns 0 and cube(1) returns 1."
+    },
+    {
+      "id": "AC-4",
+      "description": "(R2) cube(-2) returns -8 and cube(-3) returns -27."
+    },
+    {
+      "id": "AC-5",
+      "description": "(R4) At least one test function in a file under tests/ imports cube from app_int.main and asserts on its return value, and that test passes under `uv run pytest -q`."
+    },
+    {
+      "id": "AC-6",
+      "description": "(R5) health_check() still returns {\"status\": \"ok\"} and add(2, 3) still returns 5; the pre-existing tests in tests/test_main.py are still present and pass."
+    },
+    {
+      "id": "AC-7",
+      "description": "(R6) `uv run pytest -q` exits with status 0 and reports no failures or errors."
+    },
+    {
+      "id": "AC-8",
+      "description": "(R6) `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-9",
+      "description": "(R7) The cube function definition has type annotations on its parameter and return value and has a non-empty docstring."
+    }
+  ]
+}
