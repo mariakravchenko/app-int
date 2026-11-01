@@ -1,0 +1,2 @@
+Created `design.md` and `constraints.json` under the requested `ARCHITECTURE` artifact directory. The design maps all nine acceptance criteria to implementation steps, preserves existing behavior, and records the minimal-change tradeoff. Source files were not modified.
+

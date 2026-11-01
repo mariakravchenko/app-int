@@ -1,0 +1,32 @@
+{
+  "constraints": [
+    {
+      "id": "C-1",
+      "description": "Define cube as a module-level callable in src/app_int/main.py with exactly one positional parameter; annotate that parameter and the return value, and provide a non-empty docstring. (AC-1, AC-9)"
+    },
+    {
+      "id": "C-2",
+      "description": "Implement cube using integer cubing semantics so the required positive, zero, one, and negative input/output cases are preserved. (AC-2, AC-3, AC-4)"
+    },
+    {
+      "id": "C-3",
+      "description": "Add at least one test function in a file under tests/ that imports cube from app_int.main and asserts its return value; cover all specified cube examples. (AC-2, AC-3, AC-4, AC-5)"
+    },
+    {
+      "id": "C-4",
+      "description": "Keep health_check() returning {\"status\": \"ok\"}, keep add(2, 3) returning 5, and retain the existing tests in tests/test_main.py. (AC-6)"
+    },
+    {
+      "id": "C-5",
+      "description": "The finished implementation must pass uv run pytest -q with no failures or errors. (AC-5, AC-6, AC-7)"
+    },
+    {
+      "id": "C-6",
+      "description": "The finished implementation must pass uv run ruff check . with exit status 0. (AC-8)"
+    },
+    {
+      "id": "C-7",
+      "description": "Do not add dependencies, database changes, or unrelated refactors; the requested function and focused test are sufficient. (Architectural decision: prefer the smallest change that satisfies all acceptance criteria.)"
+    }
+  ]
+}
