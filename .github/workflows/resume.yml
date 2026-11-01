@@ -57,7 +57,5 @@ jobs:
           # platform rule for installation tokens, not a scoping gap. Dark
           # Factory's own authenticated_login() self-heal check (crash-resume
           # dedup before posting a clarification comment) needs a real PAT.
-          # dark-factory itself now reads this under DARK_FACTORY_GITHUB_TOKEN
-          # (renamed upstream to avoid colliding with GitHub's own reserved name).
-          DARK_FACTORY_GITHUB_TOKEN: ${{ secrets.DISPATCH_GITHUB_TOKEN }}
+          DARK_FACTORY_GITHUB_TOKEN: ${{ secrets.DARK_FACTORY_GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

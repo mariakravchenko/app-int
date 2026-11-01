@@ -87,10 +87,7 @@ gate) against this repo with zero GitHub involvement. If it reaches
 
 Once this repo is pushed and the `DATABASE_URL`/`DATABASE_URL_DIRECT`/
 `DARK_FACTORY_GITHUB_TOKEN`/`ANTHROPIC_API_KEY` secrets are added under repo
-Settings → Secrets and variables → Actions (same values as `.env`; the
-workflow files map `secrets.DISPATCH_GITHUB_TOKEN` to the
-`DARK_FACTORY_GITHUB_TOKEN` env var dark-factory reads, reusing the PAT
-originally created for the now-removed webhook receiver):
+Settings → Secrets and variables → Actions (same values as `.env`):
 
 - **Start a run:** Actions tab → `run` workflow → Run workflow → fill in
   `source` (e.g. `text:"add a subtract function"` or `github:3`) → Run.
