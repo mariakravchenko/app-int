@@ -1,0 +1,44 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import round_currency` succeeds and `round_currency` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2] round_currency returns a value with at most 2 decimal places for any of the example inputs, e.g. round_currency(3.14159) equals 3.14 numerically."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3] Round-half-up on exact halves: round_currency(2.345) == 2.35, round_currency(2.335) == 2.34, round_currency(0.005) == 0.01, round_currency(1.005) == 1.01 (numeric comparison). round_currency(2.345) must NOT equal 2.34 (banker's rounding result)."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R4] Negative halves round away from zero: round_currency(-2.345) == -2.35 and round_currency(-0.005) == -0.01 (numeric comparison)."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R5] Non-half values round to nearest: round_currency(2.344) == 2.34, round_currency(2.346) == 2.35, round_currency(-2.344) == -2.34 (numeric comparison)."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R6] Values with 2 or fewer decimals are unchanged: round_currency(10) == 10.00, round_currency(2.5) == 2.50, round_currency(0) == 0.00, round_currency(19.99) == 19.99 (numeric comparison)."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R7] round_currency.__doc__ is non-empty and explicitly names the rounding mode as round-half-up (half away from zero) and 2 decimal places."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R8] health_check() still returns {\"status\": \"ok\"} and add(2, 3) still returns 5; all pre-existing tests in tests/ pass unmodified."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R9] `uv run pytest -q` exits 0 and `uv run ruff check .` exits 0 on the final branch."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R10] The [project] dependencies list in pyproject.toml is unchanged compared with the base branch."
+    }
+  ]
+}
