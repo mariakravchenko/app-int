@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "name": "AC-1: import and single-argument call",
+      "result": "PASS",
+      "detail": "`from app_int.main import round_currency` succeeded in tests/test_round_currency.py and in an ad-hoc `uv run python -c` script; round_currency(Decimal('2.345')) returned Decimal('2.35'). inspect.signature shows exactly one parameter (`amount`)."
+    },
+    {
+      "name": "AC-2: return type Decimal with exponent -2",
+      "result": "PASS",
+      "detail": "test_returns_decimal_with_two_places[Decimal('2.345'), 10, 2.5] passed. Ad-hoc: Decimal('2.345') -> Decimal('2.35') exp -2; 10 -> Decimal('10.00') exp -2; 2.5 -> Decimal('2.50') exp -2. All 17 example inputs returned type Decimal with exponent -2."
+    },
+    {
+      "name": "AC-3: positive ties round away from zero",
+      "result": "PASS",
+      "detail": "Observed: 2.345 -> 2.35, 2.335 -> 2.34, 0.005 -> 0.01, 1.125 -> 1.13 (Decimal inputs). test_positive_ties_round_away_from_zero passed."
+    },
+    {
+      "name": "AC-4: half-up, not banker's rounding",
+      "result": "PASS",
+      "detail": "Observed: round_currency(Decimal('2.345')) == Decimal('2.35') (!= 2.34); round_currency(Decimal('2.325')) == Decimal('2.33'). test_not_bankers_rounding passed. Rounding mode matches the requester-confirmed decision recorded in BA/requirements.md (round-half-up)."
+    },
+    {
+      "name": "AC-5: negative ties round away from zero",
+      "result": "PASS",
+      "detail": "Observed: Decimal('-2.345') -> Decimal('-2.35'); Decimal('-0.005') -> Decimal('-0.01'). test_negative_ties_round_away_from_zero passed."
+    },
+    {
+      "name": "AC-6: non-ties round to nearest cent",
+      "result": "PASS",
+      "detail": "Observed: 2.344 -> 2.34, 2.346 -> 2.35, -2.344 -> -2.34. test_non_ties_round_to_nearest_cent passed."
+    },
+    {
+      "name": "AC-7: already-rounded amounts keep value",
+      "result": "PASS",
+      "detail": "Observed: 10 -> Decimal('10.00'), 2.5 -> Decimal('2.50'), Decimal('2.34') -> Decimal('2.34'), 0 -> Decimal('0.00'). test_already_rounded_values_keep_value passed."
+    },
+    {
+      "name": "AC-8: floats round by written decimal value",
+      "result": "PASS",
+      "detail": "Observed: 2.345 -> Decimal('2.35'), 1.005 -> Decimal('1.01'), -2.345 -> Decimal('-2.35'). test_float_inputs_round_by_written_value passed."
+    },
+    {
+      "name": "AC-9: existing tests unchanged and passing",
+      "result": "PASS",
+      "detail": "`git diff main -- tests/test_main.py` is empty. health_check() returned {'status': 'ok'}; add(2, 3) returned 5. test_health_check_reports_ok and test_add_returns_the_sum passed."
+    },
+    {
+      "name": "AC-10: docstring names half-up; signature annotated",
+      "result": "PASS",
+      "detail": "Docstring first line: 'Round a monetary amount to exactly 2 decimal places using half-up rounding.' Signature: `round_currency(amount: Decimal | int | float) -> Decimal`. test_docstring_names_half_up_and_signature_is_annotated passed."
+    },
+    {
+      "name": "AC-11: no new runtime dependency",
+      "result": "PASS",
+      "detail": "`git diff main -- pyproject.toml` produced 0 lines; implementation imports only `decimal` from the standard library."
+    },
+    {
+      "name": "AC-12: quality gate and round_currency test coverage",
+      "result": "PASS",
+      "detail": "QA added tests/test_round_currency.py (Developer added none) covering positive ties, negative ties, non-ties, already-rounded values and float inputs. `uv run pytest -q` -> '24 passed in 0.03s', exit 0. `uv run ruff check .` -> 'All checks passed!', exit 0."
+    }
+  ]
+}
