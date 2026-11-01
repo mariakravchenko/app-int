@@ -1,0 +1,17 @@
+{
+  "criteria": [
+    {"criterion_id": "AC-1", "result": "PASS", "notes": "Defined in src/app_int/main.py with signature (n: int) -> int; calling with 0 or 2 args raises TypeError."},
+    {"criterion_id": "AC-2", "result": "PASS", "notes": "cube(3)=27, cube(2)=8."},
+    {"criterion_id": "AC-3", "result": "PASS", "notes": "cube(0)=0, cube(1)=1."},
+    {"criterion_id": "AC-4", "result": "PASS", "notes": "cube(-2)=-8, cube(-3)=-27."},
+    {"criterion_id": "AC-5", "result": "PASS", "notes": "QA added tests/test_cube.py (6 parametrized cases), all passing."},
+    {"criterion_id": "AC-6", "result": "PASS", "notes": "health_check and add behave as before; both original tests are present and pass."},
+    {"criterion_id": "AC-7", "result": "PASS", "notes": "8 passed, exit 0."},
+    {"criterion_id": "AC-8", "result": "PASS", "notes": "All checks passed, exit 0."},
+    {"criterion_id": "AC-9", "result": "PASS", "notes": "Annotated n: int -> int; docstring present."}
+  ],
+  "issues": [
+    {"severity": "minor", "description": "The Developer could not add the required test because tests/ is outside the DEVELOPMENT write scope, so QA wrote tests/test_cube.py. The cube source change also landed in commit af379ed ('recover uncommitted changes from QA attempt 1') rather than in the DEVELOPMENT commit. Neither affects correctness."}
+  ],
+  "status": "PASS"
+}

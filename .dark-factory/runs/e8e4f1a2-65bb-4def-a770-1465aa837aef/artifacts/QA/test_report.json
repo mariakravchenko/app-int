@@ -1,0 +1,13 @@
+{
+  "cases": [
+    {"name": "AC-1: cube importable, defined in src/app_int/main.py, one positional arg", "result": "PASS", "detail": "uv run python -c: inspect.getsourcefile(cube) -> .../src/app_int/main.py; inspect.signature(cube) -> (n: 'int') -> 'int' with one POSITIONAL_OR_KEYWORD param; cube() -> TypeError; cube(1, 2) -> TypeError."},
+    {"name": "AC-2: cube(3)==27, cube(2)==8", "result": "PASS", "detail": "Direct call printed 27, 8. Also covered by tests/test_cube.py::test_cube_returns_third_power[3-27] and [2-8], both passed."},
+    {"name": "AC-3: cube(0)==0, cube(1)==1", "result": "PASS", "detail": "Direct call printed 0, 1. tests/test_cube.py params [0-0] and [1-1] passed."},
+    {"name": "AC-4: cube(-2)==-8, cube(-3)==-27", "result": "PASS", "detail": "Direct call printed -8, -27. tests/test_cube.py params [-2--8] and [-3--27] passed."},
+    {"name": "AC-5: a test under tests/ imports cube from app_int.main, asserts its return value, and passes", "result": "PASS", "detail": "Developer's write scope excluded tests/ (tests_added: []), so QA added tests/test_cube.py: `from app_int.main import cube` plus a parametrized test asserting cube(n) == expected for (3,27),(2,8),(0,0),(1,1),(-2,-8),(-3,-27). `uv run pytest -q` -> 8 passed."},
+    {"name": "AC-6: health_check and add unchanged, pre-existing tests present and passing", "result": "PASS", "detail": "health_check() -> {'status': 'ok'}; add(2, 3) -> 5. tests/test_main.py still contains test_health_check_reports_ok and test_add_returns_the_sum, and both pass in the 8-passed run."},
+    {"name": "AC-7: uv run pytest -q exits 0 with no failures or errors", "result": "PASS", "detail": "Output: '8 passed in 0.01s'; exit=0."},
+    {"name": "AC-8: uv run ruff check . exits 0", "result": "PASS", "detail": "Output: 'All checks passed!'; exit=0 (with tests/test_cube.py included)."},
+    {"name": "AC-9: cube has parameter and return annotations and a non-empty docstring", "result": "PASS", "detail": "cube.__annotations__ -> {'n': 'int', 'return': 'int'}; cube.__doc__ -> 'Return ``n`` raised to the third power.'"}
+  ]
+}
