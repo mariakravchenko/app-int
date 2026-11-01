@@ -1,0 +1,56 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import round_currency` succeeds and `round_currency` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2, R3] round_currency(2.345) returns a value numerically equal to 2.35 (not 2.34)."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3] round_currency(2.355) returns a value numerically equal to 2.36, and round_currency(0.005) returns a value numerically equal to 0.01."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R3, R7] round_currency(1.005) returns a value numerically equal to 1.01 (the binary-float representation of 1.005 must not cause it to round down to 1.00)."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R4] round_currency(-2.345) returns a value numerically equal to -2.35, and round_currency(-0.005) returns a value numerically equal to -0.01."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R5] round_currency(2.344) equals 2.34, round_currency(2.346) equals 2.35, and round_currency(-2.344) equals -2.34."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R6] round_currency(2.34) equals 2.34, round_currency(5) equals 5.00, and round_currency(0) equals 0.00."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R2, R8] For every input in AC-2 to AC-7, the return value is a number (not a str), and str() of the return value shows at most 2 digits after the decimal point."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R9] health_check() still returns {\"status\": \"ok\"} and add(2, 3) still returns 5; the existing tests in tests/test_main.py pass without modification."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R10] The round_currency docstring explicitly states that it rounds to 2 decimal places using round-half-up (exact halves away from zero)."
+    },
+    {
+      "id": "AC-11",
+      "description": "[R11] `uv run pytest -q` exits with status 0."
+    },
+    {
+      "id": "AC-12",
+      "description": "[R11] `uv run ruff check .` exits with status 0."
+    },
+    {
+      "id": "AC-13",
+      "description": "[R12] The tests directory contains at least one test of round_currency for each of: a positive exact half, a negative exact half, a non-half value, and a value that already has 2 or fewer decimal places."
+    }
+  ]
+}
