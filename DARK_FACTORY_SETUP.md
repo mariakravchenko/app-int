@@ -49,9 +49,7 @@ where to get it:
 |---|---|---|
 | `DATABASE_URL` | Pooled Neon connection string (host has `-pooler`) | Neon Console → your project → Connection Details → pooled string. Rewrite the scheme to `postgresql+psycopg://`. |
 | `DATABASE_URL_DIRECT` | Direct (non-pooled) Neon connection string | Same screen, toggle "Connection pooling" off to reveal the direct host (no `-pooler`). Same scheme rewrite. |
-| `GITHUB_TOKEN` | Dark Factory's own comment/PR credential | GitHub → Settings → Developer settings → Fine-grained tokens → New token, scoped to `mariakravchenko/app-int` only, with **Contents** (read/write), **Issues** (read/write), **Pull requests** (read/write). |
-| `DISPATCH_GITHUB_TOKEN` | Lets the webhook receiver trigger `resume.yml` | Same screen, a **separate** fine-grained token scoped to `mariakravchenko/app-int` only, with **only** the **Actions** (read/write) permission. |
-| `GITHUB_WEBHOOK_SECRET` | Verifies inbound webhook deliveries are really from GitHub | You choose this value yourself — any random string (e.g. `openssl rand -hex 32`). You'll enter the same value on the GitHub webhook side in step 5. |
+| `DARK_FACTORY_GITHUB_TOKEN` | Dark Factory's own comment/PR/read credential | GitHub → Settings → Developer settings → Fine-grained tokens → New token, scoped to `mariakravchenko/app-int` only, with **Contents** (read/write), **Issues** (read/write), **Pull requests** (read/write). Must be a real PAT, not GitHub Actions' own ambient token — that token can never call `GET /user`, which Dark Factory's crash-resume dedup check needs. |
 | `ANTHROPIC_API_KEY` | Credential for the `claude-code` worker (all 4 roles use it) | console.anthropic.com → API Keys. (Already present in your `dark-factory` repo's `.env` if you want to reuse the same key.) |
 
 **Do not paste any of these values into chat** — fill `.env` directly
@@ -88,41 +86,30 @@ gate) against this repo with zero GitHub involvement. If it reaches
 ### 5. Run it from GitHub Actions instead of your laptop (manual, no server)
 
 Once this repo is pushed and the `DATABASE_URL`/`DATABASE_URL_DIRECT`/
-`GITHUB_TOKEN`/`ANTHROPIC_API_KEY` secrets are added under repo Settings →
-Secrets and variables → Actions (same values as `.env`):
+`DARK_FACTORY_GITHUB_TOKEN`/`ANTHROPIC_API_KEY` secrets are added under repo
+Settings → Secrets and variables → Actions (same values as `.env`; the
+workflow files map `secrets.DISPATCH_GITHUB_TOKEN` to the
+`DARK_FACTORY_GITHUB_TOKEN` env var dark-factory reads, reusing the PAT
+originally created for the now-removed webhook receiver):
 
 - **Start a run:** Actions tab → `run` workflow → Run workflow → fill in
   `source` (e.g. `text:"add a subtract function"` or `github:3`) → Run.
 - **Resume a paused run:** Actions tab → `resume` workflow → Run workflow →
-  paste the `run_id` it printed → Run.
+  paste the `run_id` it printed, and if the run is `WAITING_HUMAN`, also fill
+  in `answer` with the human's reply text → Run.
 
-This is the manual stopgap — you click the button yourself after reading a
-GitHub issue reply, no webhook receiver needed. See the next step for the
-fully-automatic version.
+This is the only resume path — Dark Factory has no webhook receiver or
+auto-resume server. The flow, proven live against this repo:
 
-### 6. GitHub issue intake + automatic resume on reply (optional, needs a server)
+1. `source: github:<issue-number>` starts a run against a real GitHub issue.
+2. If a role needs clarification, the run pauses `WAITING_HUMAN` and Dark
+   Factory posts its question as a comment on that issue.
+3. A human replies on the issue with the answer.
+4. Dispatch the `resume` Action with that `run_id` and `answer` — a fresh
+   job re-materializes the run from Neon, submits the answer, and continues.
+   If a later role asks another question, repeat from step 3.
 
-If you want replying on the issue to resume the run automatically, instead of
-clicking the `resume` Action button yourself:
-
-1. Open a real issue on `mariakravchenko/app-int`, e.g. "Add a subtract
-   function."
-2. Run `dark-factory run github:<issue-number>` (locally, or via the `run`
-   Action above with `source: github:<issue-number>`).
-3. **Webhook receiver** — this is a separate process you host (not something
-   `dark-factory run`/`resume` does on its own):
-   - Install the optional extra: `uv tool install "dark-factory[webhook] @ git+https://github.com/mariakravchenko/dark-factory.git"`
-   - Run it: `uvicorn dark_factory.webhook.app:build_app --factory --host 0.0.0.0 --port 8000`
-   - Expose it to the internet somehow (a tunnel like `ngrok http 8000` is the
-     fastest way to test this; a real deployment would put it behind a proper
-     host).
-   - On GitHub: repo Settings → Webhooks → Add webhook → Payload URL = your
-     exposed URL, Content type = `application/json`, Secret =
-     `GITHUB_WEBHOOK_SECRET`'s value, events = **Issue comments** only.
-4. Reply on the issue with the clarifying answer (if the run paused) — the
-   receiver records it and dispatches the `resume` Action automatically.
-
-### 7. Once a run completes and opens a real PR
+### 6. Once a run completes and opens a real PR
 
 That's the signal to rewrite this doc into the final reference — tell me and
 I'll do that pass.
