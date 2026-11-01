@@ -1,0 +1,16 @@
+{
+  "criteria": [
+    {"id": "AC-1", "description": "(R-1) `from app_int.main import square` succeeds, and `square` is a callable defined in src/app_int/main.py."},
+    {"id": "AC-2", "description": "(R-2) `inspect.signature(square)` has exactly one parameter, named `n`."},
+    {"id": "AC-3", "description": "(R-3) square(3) == 9, square(1) == 1, and square(12) == 144, and each result is an int."},
+    {"id": "AC-4", "description": "(R-4) square(-3) == 9 and square(-1) == 1."},
+    {"id": "AC-5", "description": "(R-5) square(0) == 0."},
+    {"id": "AC-6", "description": "(R-6) `square.__doc__` is a non-empty string."},
+    {"id": "AC-7", "description": "(R-7) `square.__annotations__` contains an entry for 'n' and an entry for 'return'."},
+    {"id": "AC-8", "description": "(R-8) At least one test function under tests/ imports `square` from `app_int.main` and asserts its result for a positive integer, a negative integer, and zero."},
+    {"id": "AC-9", "description": "(R-9) The existing tests test_health_check_reports_ok and test_add_returns_the_sum are still present and pass, and health_check() == {'status': 'ok'} and add(2, 3) == 5."},
+    {"id": "AC-10", "description": "(R-10) `uv run pytest -q` exits with status 0."},
+    {"id": "AC-11", "description": "(R-11) `uv run ruff check .` exits with status 0."},
+    {"id": "AC-12", "description": "(R-12) The `dependencies` list in the [project] section of pyproject.toml is unchanged (still empty)."}
+  ]
+}
