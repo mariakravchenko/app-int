@@ -1,0 +1,10 @@
+{
+  "summary": "Added round_currency(amount: Decimal | int | float) -> Decimal to src/app_int/main.py. The rounding mode is round-half-up, which the requester confirmed in the BA decision record. The function converts the input with Decimal(str(amount)), so floats are rounded by their written decimal value, then quantizes to Decimal('0.01') with decimal.ROUND_HALF_UP. Ties round away from zero for both positive and negative amounts, and the result always has exponent -2. The docstring names half-up rounding. It uses only the standard library. health_check, add and pyproject.toml are unchanged (C-1 to C-6). This role may only write under src/**, so I did not edit tests/test_main.py and the tests C-7 asks for are left to QA. Checks run: an ad-hoc script checked all 17 example values from AC-2 to AC-8 (type, value and exponent -2) and all passed. `uv run pytest -q` passed (2 existing tests) and `uv run ruff check .` passed.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "modified: imported ROUND_HALF_UP and Decimal from decimal, added the module constant _CENT, and added the round_currency function"
+    }
+  ],
+  "tests_added": []
+}
