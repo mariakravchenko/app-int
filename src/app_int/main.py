@@ -16,3 +16,8 @@ def health_check() -> dict[str, str]:
 def add(a: int, b: int) -> int:
     """Return the sum of two integers."""
     return a + b
+
+
+def square(n: int) -> int:
+    """Return the square of an integer."""
+    return n * n
