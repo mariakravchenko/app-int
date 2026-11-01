@@ -1,0 +1,80 @@
+{
+  "criteria": [
+    {
+      "criterion_id": "AC-1",
+      "result": "PASS",
+      "notes": "from app_int.main import round_currency succeeded; callable(round_currency) is True (tests/test_round_currency.py::test_round_currency_is_callable passed)."
+    },
+    {
+      "criterion_id": "AC-2",
+      "result": "PASS",
+      "notes": "Smoke run: 2.345 -> 2.35 (float). Banker's rounding would give 2.34. test_positive_exact_half_rounds_away_from_zero_not_to_even passed."
+    },
+    {
+      "criterion_id": "AC-3",
+      "result": "PASS",
+      "notes": "2.355 -> 2.36; 0.005 -> 0.01 (parametrized test_round_currency_value passed)."
+    },
+    {
+      "criterion_id": "AC-4",
+      "result": "PASS",
+      "notes": "1.005 -> 1.01 (not 1.0). Parametrized test passed."
+    },
+    {
+      "criterion_id": "AC-5",
+      "result": "PASS",
+      "notes": "-2.345 -> -2.35; -0.005 -> -0.01. Parametrized tests passed."
+    },
+    {
+      "criterion_id": "AC-6",
+      "result": "PASS",
+      "notes": "2.344 -> 2.34; 2.346 -> 2.35; -2.344 -> -2.34. Parametrized tests passed."
+    },
+    {
+      "criterion_id": "AC-7",
+      "result": "PASS",
+      "notes": "2.34 -> 2.34; 5 -> 5.0; 0 -> 0.0. Parametrized tests passed."
+    },
+    {
+      "criterion_id": "AC-8",
+      "result": "PASS",
+      "notes": "All 12 inputs return type float; str() values: 2.35, 2.36, 0.01, 1.01, -2.35, -0.01, 2.34, 2.35, -2.34, 2.34, 5.0, 0.0 (all <=2 fractional digits). test_round_currency_returns_number_with_at_most_two_decimals passed for all 12."
+    },
+    {
+      "criterion_id": "AC-9",
+      "result": "PASS",
+      "notes": "health_check() -> {'status': 'ok'}; add(2, 3) -> 5; `git diff --quiet HEAD -- tests/test_main.py` reports no change; both tests in tests/test_main.py pass."
+    },
+    {
+      "criterion_id": "AC-10",
+      "result": "PASS",
+      "notes": "Docstring begins 'Round a monetary amount to 2 decimal places using round-half-up.' and says 'exact halves round away from zero'. test_docstring_states_two_places_and_round_half_up passed."
+    },
+    {
+      "criterion_id": "AC-11",
+      "result": "PASS",
+      "notes": "Output: '30 passed in 0.03s'; exit status 0."
+    },
+    {
+      "criterion_id": "AC-12",
+      "result": "PASS",
+      "notes": "Output: 'All checks passed!'; exit status 0."
+    },
+    {
+      "criterion_id": "AC-13",
+      "result": "PASS",
+      "notes": "QA added tests/test_round_currency.py (the Developer could not write under tests/). It covers positive exact half (2.345, 2.355, 0.005, 1.005), negative exact half (-2.345, -0.005), non-half (2.344, 2.346, -2.344) and <=2 decimals (2.34, 5, 0). All pass."
+    }
+  ],
+  "issues": [
+    {
+      "severity": "minor",
+      "description": "The issue asked for the rounding mode (round-half-up vs round-half-to-even) to be confirmed by the requester. BA requirements.md says the requester confirmed round-half-up, and the BA result text says 'as you confirmed', but issue #11 has no comments and no answer is stored in the run's input/ or logs. QA could not verify the confirmation independently. If the confirmed mode was actually half-to-even, change the rounding constant, the docstring and the expected values in tests/test_round_currency.py (2.345 -> 2.34, 0.005 -> 0.0, -2.345 -> -2.34, -0.005 -> -0.0)."
+    },
+    {
+      "severity": "minor",
+      "description": "The round_currency tests were written by QA in tests/test_round_currency.py because the Developer's write scope (src/**) excludes tests/. The implementation_summary tests_added list is empty."
+    }
+  ],
+  "status": "PASS"
+}
