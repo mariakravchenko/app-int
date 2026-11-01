@@ -1,7 +1,7 @@
 # Architect role definition. Editing this file changes the resolved role in
 # the next run's snapshot with no Python change.
 name: ARCHITECTURE
-worker: claude-code
+worker: copilot
 instructions: ../instructions/architecture.md
 
 tools: [repo.read, repo.search, artifacts.read, artifacts.write]

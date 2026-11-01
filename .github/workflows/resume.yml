@@ -39,6 +39,9 @@ jobs:
       - name: Install the worker runtime (claude-code)
         run: npm install -g @anthropic-ai/claude-code
 
+      - name: Install the worker runtime (copilot)
+        run: npm install -g @github/copilot
+
       - name: Resume the run
         run: |
           if [ -n "$RUN_ANSWER" ]; then
@@ -59,3 +62,4 @@ jobs:
           # dedup before posting a clarification comment) needs a real PAT.
           DARK_FACTORY_GITHUB_TOKEN: ${{ secrets.DARK_FACTORY_GITHUB_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
