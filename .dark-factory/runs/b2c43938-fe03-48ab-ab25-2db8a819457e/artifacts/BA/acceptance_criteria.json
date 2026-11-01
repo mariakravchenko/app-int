@@ -1,0 +1,48 @@
+{
+  "criteria": [
+    {
+      "id": "AC-1",
+      "description": "[R1] `from app_int.main import cube` succeeds and `cube` is callable."
+    },
+    {
+      "id": "AC-2",
+      "description": "[R2] `inspect.signature(app_int.main.cube)` has exactly one parameter, and that parameter is named `n`."
+    },
+    {
+      "id": "AC-3",
+      "description": "[R3, R4] `cube(3) == 27`, `cube(1) == 1` and `cube(10) == 1000`, and each result is an instance of `int`."
+    },
+    {
+      "id": "AC-4",
+      "description": "[R3, R5] `cube(0) == 0`."
+    },
+    {
+      "id": "AC-5",
+      "description": "[R3, R6] `cube(-2) == -8` and `cube(-1) == -1`."
+    },
+    {
+      "id": "AC-6",
+      "description": "[R7] `health_check() == {\"status\": \"ok\"}` and `add(2, 3) == 5` still hold, and the existing tests in `tests/test_main.py` pass unchanged."
+    },
+    {
+      "id": "AC-7",
+      "description": "[R8] `app_int.main.cube.__annotations__` contains an entry for `n` and an entry for `return`, both `int`."
+    },
+    {
+      "id": "AC-8",
+      "description": "[R9] `app_int.main.cube.__doc__` is a non-empty string."
+    },
+    {
+      "id": "AC-9",
+      "description": "[R10] At least one test function under `tests/` imports `cube` from `app_int.main` and asserts on its return value."
+    },
+    {
+      "id": "AC-10",
+      "description": "[R11] `uv run pytest -q` exits with status 0 and its output shows at least one test covering `cube`."
+    },
+    {
+      "id": "AC-11",
+      "description": "[R11] `uv run ruff check .` exits with status 0."
+    }
+  ]
+}
