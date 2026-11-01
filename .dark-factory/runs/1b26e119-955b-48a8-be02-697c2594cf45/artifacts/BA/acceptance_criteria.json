@@ -1,0 +1,15 @@
+{
+  "criteria": [
+    {"id": "AC-1", "description": "(R1, R5) `from app_int.main import cube` succeeds and `cube` is callable."},
+    {"id": "AC-2", "description": "(R2) `cube` takes exactly one parameter: `cube(2)` works, and both `cube()` and `cube(1, 2)` raise TypeError."},
+    {"id": "AC-3", "description": "(R3) `cube(3) == 27` and `cube(2) == 8`, and the result for an integer input has type int."},
+    {"id": "AC-4", "description": "(R4) `cube(0) == 0`, `cube(1) == 1`, and `cube(-2) == -8`."},
+    {"id": "AC-5", "description": "(R6) `cube.__doc__` is a non-empty string."},
+    {"id": "AC-6", "description": "(R7) At least one test function under `tests/` calls `cube` and makes an assertion about the value it returns."},
+    {"id": "AC-7", "description": "(R8) `cube` has type annotations: the parameter `n` is annotated `int` and the return type is annotated `int`."},
+    {"id": "AC-8", "description": "(R9) The existing tests `test_health_check_reports_ok` and `test_add_returns_the_sum` are still present and pass, and the bodies of `health_check` and `add` are unchanged."},
+    {"id": "AC-9", "description": "(R10) `uv run pytest -q` exits with status 0."},
+    {"id": "AC-10", "description": "(R10) `uv run ruff check .` exits with status 0."},
+    {"id": "AC-11", "description": "(R11) The change does not add or modify any dependency entries in `pyproject.toml`."}
+  ]
+}
