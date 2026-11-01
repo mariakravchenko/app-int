@@ -1,0 +1,18 @@
+{
+  "criteria": [
+    {"criterion_id": "AC-1", "result": "PASS", "notes": "square importable, defined in src/app_int/main.py"},
+    {"criterion_id": "AC-2", "result": "PASS", "notes": "single parameter 'n'"},
+    {"criterion_id": "AC-3", "result": "PASS", "notes": "9, 1, 144, all int"},
+    {"criterion_id": "AC-4", "result": "PASS", "notes": "square(-3)=9, square(-1)=1"},
+    {"criterion_id": "AC-5", "result": "PASS", "notes": "square(0)=0"},
+    {"criterion_id": "AC-6", "result": "PASS", "notes": "docstring present"},
+    {"criterion_id": "AC-7", "result": "PASS", "notes": "annotations for n and return"},
+    {"criterion_id": "AC-8", "result": "PASS", "notes": "QA added test_square_returns_the_square in tests/test_main.py"},
+    {"criterion_id": "AC-9", "result": "PASS", "notes": "existing tests present and passing"},
+    {"criterion_id": "AC-10", "result": "PASS", "notes": "pytest: 3 passed, exit 0"},
+    {"criterion_id": "AC-11", "result": "PASS", "notes": "ruff: All checks passed, exit 0"},
+    {"criterion_id": "AC-12", "result": "PASS", "notes": "pyproject.toml unchanged, dependencies = []"}
+  ],
+  "issues": [],
+  "status": "PASS"
+}

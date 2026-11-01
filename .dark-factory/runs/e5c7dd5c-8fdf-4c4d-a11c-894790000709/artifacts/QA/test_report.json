@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {"name": "AC-1 import square from app_int.main", "result": "PASS", "detail": "uv run python -c 'from app_int.main import square; inspect.getsourcefile(square)' -> src/app_int/main.py, callable(square)=True"},
+    {"name": "AC-2 signature has single parameter n", "result": "PASS", "detail": "inspect.signature(square) -> (n: 'int') -> 'int'; parameters = ['n']"},
+    {"name": "AC-3 positive inputs", "result": "PASS", "detail": "square(3)=9, square(1)=1, square(12)=144; types all int"},
+    {"name": "AC-4 negative inputs", "result": "PASS", "detail": "square(-3)=9, square(-1)=1 (int)"},
+    {"name": "AC-5 zero", "result": "PASS", "detail": "square(0)=0 (int)"},
+    {"name": "AC-6 docstring non-empty", "result": "PASS", "detail": "square.__doc__ = 'Return the square of an integer.'"},
+    {"name": "AC-7 annotations for n and return", "result": "PASS", "detail": "square.__annotations__ = {'n': 'int', 'return': 'int'}"},
+    {"name": "AC-8 test covers positive, negative, zero", "result": "PASS", "detail": "QA added tests/test_main.py::test_square_returns_the_square, which imports square from app_int.main and asserts square(3)==9, square(1)==1, square(12)==144, square(-3)==9, square(-1)==1, square(0)==0. The Developer added no test (tests/ is QA's write scope)."},
+    {"name": "AC-9 existing tests and behavior preserved", "result": "PASS", "detail": "test_health_check_reports_ok and test_add_returns_the_sum still in tests/test_main.py and pass; health_check()={'status': 'ok'}, add(2,3)=5"},
+    {"name": "AC-10 uv run pytest -q", "result": "PASS", "detail": "'3 passed in 0.01s', exit status 0"},
+    {"name": "AC-11 uv run ruff check .", "result": "PASS", "detail": "'All checks passed!', exit status 0"},
+    {"name": "AC-12 pyproject dependencies unchanged", "result": "PASS", "detail": "git diff main -- pyproject.toml is empty; pyproject.toml line 6: dependencies = []"}
+  ]
+}
