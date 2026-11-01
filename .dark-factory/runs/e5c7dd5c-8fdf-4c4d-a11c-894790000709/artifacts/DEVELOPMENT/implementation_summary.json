@@ -1,0 +1,10 @@
+{
+  "summary": "Added a top-level `square(n: int) -> int` function to src/app_int/main.py, after `add`. It has a one-line docstring ('Return the square of an integer.') and returns `n * n`. health_check, add, the module docstring and the `from __future__ import annotations` import are unchanged. No other files were changed: per the design and constraint C-6, the tests directory is QA's write scope, so the square test (C-7 / AC-8) is left for QA to add in tests/test_main.py. Checks run locally: `uv run pytest -q` passed (2 existing tests), `uv run ruff check .` passed, and a manual smoke check confirmed square(3)=9, square(-3)=9, square(0)=0, square(12)=144, with annotations {'n': 'int', 'return': 'int'}.",
+  "changed_files": [
+    {
+      "path": "src/app_int/main.py",
+      "change": "Added the top-level function square(n: int) -> int with a one-line docstring, returning n * n."
+    }
+  ],
+  "tests_added": []
+}
